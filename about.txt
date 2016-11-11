@@ -1,0 +1,15 @@
+Názov projektu: Obchodná sieť
+Autori: Marián Babic, Libor Vojtek
+Popis projektu: Program by mal zabezpečovať komplexnú správu obchodnej siete. Evidencia
+pobočiek (predajní) v rozsahu názov, adresa, výdaje, príjmy, (otváracie hodiny). Evidencia
+zamestnancov v rozsahu meno, priezvisko, pozícia, pobočka, dochádzka, plat. Evidencia
+tovaru v rozsahu názov, nákupná cena, predajná cena, počet kusov na pobočke. Pokladňa.
+V základnej verzii by mal program zvládať pridávanie, odstraňovanie a úpravu pobočiek,
+vyčíslenie zisku/straty za určené obdobie, ďalej pridávanie, odstraňovanie a úpravu
+zamestnancov, vyčíslenie odpracovaných hodín za určené obdobie a vyčíslenie platu podľa
+vopred definovaného systému (hodinová/mesačná mzda, ...), ďalej pridávanie,
+odstraňovanie a úpravu tovaru, upozornenie pri nízkom množstve na príslušnej pobočke,
+a simuláciu predaja/pokladne.
+Program by v ďalšom štádiu bolo možné rozšíriť o automatický dochádzkový systém, zľavy
+pre tovar celkové alebo viazané na pobočku, automatické vystavenie objednávky
+nenaskladneného tovaru a podobne.

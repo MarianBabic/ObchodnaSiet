@@ -3,12 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package myid.obchodnasiet;
+package myid.obchodnasiet.domain;
 
-/**
- *
- * @author Administrator
- */
-public class Obchod {
+public class Pobocka {
     
 }
