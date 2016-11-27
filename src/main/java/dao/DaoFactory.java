@@ -22,7 +22,6 @@ public enum DaoFactory {
         try {
             OracleDataSource dataSource = new OracleDataSource();
             dataSource.setURL("jdbc:oracle:thin:@//localhost:1521/XE");
-//            dataSource.setDatabaseName("obchodna_siet");
             dataSource.setUser("obchodna_siet");
             dataSource.setPassword("password");
 

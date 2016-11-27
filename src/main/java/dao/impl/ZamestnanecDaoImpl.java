@@ -26,12 +26,13 @@ public class ZamestnanecDaoImpl implements ZamestnanecDao {
     @Override
     public Zamestnanec nacitajZamestnanca(int id) {
         String sql = "SELECT z.id, z.meno, z.priezvisko, p.id AS p_id, p.nazov AS p_nazov, p.adresa AS p_adresa, p.otvaracie_hodiny AS p_otvaracie_hodiny, z.odpracovany_cas, z.zisk_z_predaja, z.plat_brutto from zamestnanec z JOIN prevadzka p ON p.id=z.prevadzka_id WHERE z.id=" + id;
-        return (Zamestnanec) jdbcTemplate.queryForObject(sql, new ZamestnanecRowMapper());
+        return jdbcTemplate.queryForObject(sql, new ZamestnanecRowMapper());
     }
 
     @Override
     public List<Zamestnanec> nacitajVsetkychZamestnancov() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "SELECT z.id, z.meno, z.priezvisko, p.id AS p_id, p.nazov AS p_nazov, p.adresa AS p_adresa, p.otvaracie_hodiny AS p_otvaracie_hodiny, z.odpracovany_cas, z.zisk_z_predaja, z.plat_brutto from zamestnanec z JOIN prevadzka p ON p.id=z.prevadzka_id";
+        return jdbcTemplate.query(sql, new ZamestnanecRowMapper());
     }
 
     @Override

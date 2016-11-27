@@ -24,7 +24,7 @@ public class ProduktDaoImpl implements ProduktDao {
     public Produkt nacitajProdukt(int id) {
         String sql = "SELECT * FROM produkt WHERE id =" + id;
         BeanPropertyRowMapper<Produkt> rowMapper = new BeanPropertyRowMapper<>(Produkt.class);
-        return (Produkt) jdbcTemplate.queryForObject(sql, rowMapper);
+        return jdbcTemplate.queryForObject(sql, rowMapper);
     }
 
     @Override

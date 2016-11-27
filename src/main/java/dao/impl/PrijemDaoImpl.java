@@ -6,7 +6,6 @@ import entity.Prijem;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -27,14 +26,13 @@ public class PrijemDaoImpl implements PrijemDao {
     @Override
     public Prijem nacitajPrijem(int id) {
         String sql = "SELECT p.id, pr.id AS pr_id, pr.nazov AS pr_nazov, pr.adresa AS pr_adresa, pr.otvaracie_hodiny AS pr_otvaracie_hodiny, p.popis, p.datum, p.suma from prijem p JOIN prevadzka pr ON pr.id=p.prevadzka_id WHERE p.id=" + id;
-        return (Prijem) jdbcTemplate.queryForObject(sql, new PrijemRowMapper());
+        return jdbcTemplate.queryForObject(sql, new PrijemRowMapper());
     }
 
     @Override
     public List<Prijem> nacitajVsetkyPrijmy() {
-        String sql = "SELECT * FROM prijem";
-        BeanPropertyRowMapper<Prijem> rowMapper = new BeanPropertyRowMapper<>(Prijem.class);
-        return jdbcTemplate.query(sql, rowMapper);
+        String sql = "SELECT p.id, pr.id AS pr_id, pr.nazov AS pr_nazov, pr.adresa AS pr_adresa, pr.otvaracie_hodiny AS pr_otvaracie_hodiny, p.popis, p.datum, p.suma from prijem p JOIN prevadzka pr ON pr.id=p.prevadzka_id";
+        return jdbcTemplate.query(sql, new PrijemRowMapper());
     }
 
     @Override

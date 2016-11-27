@@ -24,7 +24,7 @@ public class PrevadzkaDaoImpl implements PrevadzkaDao {
     public Prevadzka nacitajPrevadzku(int id) {
         String sql = "SELECT * FROM prevadzka WHERE id=" + id;
         BeanPropertyRowMapper<Prevadzka> rowMapper = new BeanPropertyRowMapper<>(Prevadzka.class);
-        return (Prevadzka) jdbcTemplate.queryForObject(sql, rowMapper);
+        return jdbcTemplate.queryForObject(sql, rowMapper);
         // toto je skratena verzia predoslych 2 riadkov :)
 //        return jdbcTemplate.query(sql, rowMapper).get(0);
     }

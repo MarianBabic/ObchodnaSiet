@@ -71,9 +71,11 @@ public class Main {
 
         zamestnanecDao.pridajZamestnanaca(zamestnanec);
         
-        System.out.println(zamestnanecDao.nacitajZamestnanca(1));
+        System.out.println(zamestnanecDao.nacitajZamestnanca(2));
         
-        zamestnanecDao.odoberZamestnanca(1);
+        System.out.println(zamestnanecDao.nacitajVsetkychZamestnancov());
+        
+//        zamestnanecDao.odoberZamestnanca(1);
 
     }
 

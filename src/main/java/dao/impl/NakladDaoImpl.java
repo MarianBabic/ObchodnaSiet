@@ -7,7 +7,6 @@ import entity.Prevadzka;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -28,14 +27,13 @@ public class NakladDaoImpl implements NakladDao {
     @Override
     public Naklad nacitajNaklad(int id) {
         String sql = "SELECT n.id, p.id AS p_id, p.nazov AS p_nazov, p.adresa AS p_adresa, p.otvaracie_hodiny AS p_otvaracie_hodiny, n.popis, n.datum, n.suma from naklad n JOIN prevadzka p ON p.id=n.prevadzka_id WHERE n.id=" + id;
-        return (Naklad) jdbcTemplate.queryForObject(sql, new NakladRowMapper());
+        return jdbcTemplate.queryForObject(sql, new NakladRowMapper());
     }
 
     @Override
     public List<Naklad> nacitajVsetkyNaklady() {
-        String sql = "SELECT * FROM naklad";
-        BeanPropertyRowMapper<Naklad> rowMapper = new BeanPropertyRowMapper<>(Naklad.class);
-        return jdbcTemplate.query(sql, rowMapper);
+        String sql = "SELECT n.id, p.id AS p_id, p.nazov AS p_nazov, p.adresa AS p_adresa, p.otvaracie_hodiny AS p_otvaracie_hodiny, n.popis, n.datum, n.suma from naklad n JOIN prevadzka p ON p.id=n.prevadzka_id";
+        return jdbcTemplate.query(sql, new NakladRowMapper());
     }
 
     @Override
