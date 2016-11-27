@@ -52,7 +52,7 @@ public enum DaoFactory {
     public ProduktDao getProduktDao() {
         return produktDao;
     }
-    
+
     public ZamestnanecDao getZamestnanecDao() {
         return zamestnanecDao;
     }

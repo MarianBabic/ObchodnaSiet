@@ -14,7 +14,7 @@ public interface PrevadzkaDao {
     void upravPrevadzku(int id, String nazov, String adresa, String otvaracieHodiny);
 
     void odoberPrevadzku(int id);
-    
+
     double vycisliZisk(int id);
 
 }

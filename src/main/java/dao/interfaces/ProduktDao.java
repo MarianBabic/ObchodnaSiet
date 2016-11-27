@@ -14,7 +14,7 @@ public interface ProduktDao {
     void upravProdukt(int id);
 
     void odoberProdukt(int id);
-    
+
     double vycisliZisk(int id);
 
 }

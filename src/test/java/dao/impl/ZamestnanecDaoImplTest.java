@@ -1,7 +1,9 @@
 package dao.impl;
 
 import dao.DaoFactory;
+import dao.interfaces.PrevadzkaDao;
 import dao.interfaces.ZamestnanecDao;
+import entity.Prevadzka;
 import entity.Zamestnanec;
 import java.util.List;
 import org.junit.After;
@@ -40,12 +42,15 @@ public class ZamestnanecDaoImplTest {
      */
     @Test
     public void testPridajZamestnanaca() {
-        System.out.println("pridajZamestnanaca");
-        Zamestnanec zamestnanec = null;
-        ZamestnanecDaoImpl instance = null;
-        instance.pridajZamestnanaca(zamestnanec);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        PrevadzkaDao prevadzkaDao = DaoFactory.INSTANCE.getPrevadzkaDao();
+        int pocetPred = zamestnanecDao.nacitajVsetkychZamestnancov().size();
+        Prevadzka novaPrevadzka = new Prevadzka("TEST", "TEST", "TEST");
+        prevadzkaDao.pridajPrevadzku(novaPrevadzka);
+        List<Prevadzka> prevadzky = prevadzkaDao.nacitajVsetkyPrevadzky();
+        int idPrevadzky = prevadzky.get(prevadzky.size() - 1).getId();
+        zamestnanecDao.pridajZamestnanaca(new Zamestnanec("TEST", "TEST", DaoFactory.INSTANCE.getPrevadzkaDao().nacitajPrevadzku(idPrevadzky), 0.0, 0.0, 0.0));
+        int pocetPo = zamestnanecDao.nacitajVsetkychZamestnancov().size();
+        assertEquals(pocetPred + 1, pocetPo);
     }
 
     /**
@@ -53,14 +58,11 @@ public class ZamestnanecDaoImplTest {
      */
     @Test
     public void testNacitajZamestnanca() {
-        System.out.println("nacitajZamestnanca");
-        int id = 0;
-        ZamestnanecDaoImpl instance = null;
-        Zamestnanec expResult = null;
-        Zamestnanec result = instance.nacitajZamestnanca(id);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Zamestnanec zamestnanec = null;
+        if (!zamestnanecDao.nacitajVsetkychZamestnancov().isEmpty()) {
+            zamestnanec = zamestnanecDao.nacitajZamestnanca(zamestnanecDao.nacitajVsetkychZamestnancov().get(0).getId());
+        }
+        assertTrue(zamestnanec != null);
     }
 
     /**
@@ -68,13 +70,8 @@ public class ZamestnanecDaoImplTest {
      */
     @Test
     public void testNacitajVsetkychZamestnancov() {
-        System.out.println("nacitajVsetkychZamestnancov");
-        ZamestnanecDaoImpl instance = null;
-        List<Zamestnanec> expResult = null;
-        List<Zamestnanec> result = instance.nacitajVsetkychZamestnancov();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        List<Zamestnanec> zamestnanci = zamestnanecDao.nacitajVsetkychZamestnancov();
+        assertTrue(zamestnanci != null);
     }
 
     /**
@@ -82,10 +79,6 @@ public class ZamestnanecDaoImplTest {
      */
     @Test
     public void testUpravZamestnanca() {
-        System.out.println("upravZamestnanca");
-        int id = 0;
-        ZamestnanecDaoImpl instance = null;
-        instance.upravZamestnanca(id);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -95,12 +88,17 @@ public class ZamestnanecDaoImplTest {
      */
     @Test
     public void testOdoberZamestnanca() {
-        System.out.println("odoberZamestnanca");
-        int id = 0;
-        ZamestnanecDaoImpl instance = null;
-        instance.odoberZamestnanca(id);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Zamestnanec zamestnanec = new Zamestnanec();
+        List<Zamestnanec> zamestnanci = zamestnanecDao.nacitajVsetkychZamestnancov();
+        for (Zamestnanec z : zamestnanci) {
+            if (z.getMeno().equals("TEST")) {
+                zamestnanec = z;
+            }
+        }
+        int pocetPred = zamestnanci.size();
+        zamestnanecDao.odoberZamestnanca(zamestnanec.getId());
+        int pocetPo = zamestnanecDao.nacitajVsetkychZamestnancov().size();
+        assertTrue(pocetPred - 1 == pocetPo);
     }
 
     /**
@@ -108,14 +106,9 @@ public class ZamestnanecDaoImplTest {
      */
     @Test
     public void testVycisliZisk() {
-        System.out.println("vycisliZisk");
-        int id = 0;
-        ZamestnanecDaoImpl instance = null;
-        double expResult = 0.0;
-        double result = instance.vycisliZisk(id);
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        double zisk = Double.MIN_VALUE;
+        zisk = zamestnanecDao.nacitajZamestnanca(zamestnanecDao.nacitajVsetkychZamestnancov().get(0).getId()).getZiskZPredaja();
+        assertTrue(zisk != Double.MIN_VALUE);
     }
 
 }

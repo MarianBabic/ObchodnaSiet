@@ -36,6 +36,7 @@ naklad
 	double			suma
 prijem
 	int(11)			id
+        int(11)			prevadzka_id
 	varchar(50)		popis
 	datatime		datum
 	double			suma

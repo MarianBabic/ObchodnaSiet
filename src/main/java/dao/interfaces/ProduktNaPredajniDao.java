@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface ProduktNaPredajniDao {
     
-    void pridajProduktNaPredajnu(Produkt produkt, Prevadzka prevadzka);
+    void pridajProduktNaPredajnu(int produktId, int prevadzkaId);
     
     ProduktNaPredajni nacitajProduktNaPredajni(int produktId, int prevadzkaId);
     

@@ -34,6 +34,7 @@ public class ProduktDaoImpl implements ProduktDao {
         return jdbcTemplate.query(sql, rowMapper);
     }
 
+    // TODO
     @Override
     public void upravProdukt(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

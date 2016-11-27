@@ -36,6 +36,7 @@ public class NakladDaoImpl implements NakladDao {
         return jdbcTemplate.query(sql, new NakladRowMapper());
     }
 
+    // TODO
     @Override
     public void upravNaklad(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

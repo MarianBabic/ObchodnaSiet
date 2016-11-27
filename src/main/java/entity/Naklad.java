@@ -28,7 +28,7 @@ public class Naklad {
     public void setId(int id) {
         this.id = id;
     }
-    
+
     public Prevadzka getPrevadzka() {
         return prevadzka;
     }

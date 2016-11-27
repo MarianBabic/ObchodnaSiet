@@ -25,8 +25,8 @@ public class PrevadzkaDaoImpl implements PrevadzkaDao {
         String sql = "SELECT * FROM prevadzka WHERE id=" + id;
         BeanPropertyRowMapper<Prevadzka> rowMapper = new BeanPropertyRowMapper<>(Prevadzka.class);
         return jdbcTemplate.queryForObject(sql, rowMapper);
-        // toto je skratena verzia predoslych 2 riadkov :)
-//        return jdbcTemplate.query(sql, rowMapper).get(0);
+        // aj nasledujuce funguje :)
+        // return jdbcTemplate.query(sql, rowMapper).get(0);
     }
 
     @Override
@@ -51,11 +51,21 @@ public class PrevadzkaDaoImpl implements PrevadzkaDao {
     @Override
     public double vycisliZisk(int id) {
         String sql1 = "SELECT SUM(suma) FROM naklad WHERE prevadzka_id=" + id;
-        double naklad = jdbcTemplate.queryForObject(sql1, Double.class);
+        Double naklad = jdbcTemplate.queryForObject(sql1, Double.class);
 
         String sql2 = "SELECT SUM(suma) FROM prijem WHERE prevadzka_id=" + id;
-        double prijem = jdbcTemplate.queryForObject(sql2, Double.class);
+        Double prijem = jdbcTemplate.queryForObject(sql2, Double.class);
 
+        // TODO should throw Exception instead of returning Double.MIN_VALUE
+        if (naklad == null && prijem == null) {
+            return Double.MIN_VALUE;
+        }
+        if (naklad == null) {
+            return prijem;
+        }
+        if (prijem == null) {
+            return -naklad;
+        }
         return prijem - naklad;
     }
 

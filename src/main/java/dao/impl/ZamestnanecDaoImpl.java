@@ -35,6 +35,7 @@ public class ZamestnanecDaoImpl implements ZamestnanecDao {
         return jdbcTemplate.query(sql, new ZamestnanecRowMapper());
     }
 
+    // TODO
     @Override
     public void upravZamestnanca(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -48,7 +49,8 @@ public class ZamestnanecDaoImpl implements ZamestnanecDao {
 
     @Override
     public double vycisliZisk(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "SELECT zisk_z_predaja FROM zamestnanec WHERE id=" + id;
+        return jdbcTemplate.queryForObject(sql, Double.class);
     }
 
     private class ZamestnanecRowMapper implements RowMapper<Zamestnanec> {

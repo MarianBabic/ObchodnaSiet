@@ -4,7 +4,6 @@ import dao.DaoFactory;
 import dao.interfaces.ProduktDao;
 import entity.Produkt;
 import java.util.List;
-import junit.framework.Assert;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -41,10 +40,10 @@ public class ProduktDaoImplTest {
      */
     @Test
     public void testPridajProdukt() {
-        int produktyPred = produktDao.nacitajVsetkyProdukty().size();
-        Produkt novyProdukt = new Produkt("novy produkt", 1, 2);
-        produktDao.pridajProdukt(novyProdukt);
-        assertTrue(produktyPred + 1 == produktDao.nacitajVsetkyProdukty().size());
+        int pocetPred = produktDao.nacitajVsetkyProdukty().size();
+        produktDao.pridajProdukt(new Produkt("TEST", 1, 2));
+        int pocetPo = produktDao.nacitajVsetkyProdukty().size();
+        assertEquals(pocetPred + 1, pocetPo);
     }
 
     /**
@@ -52,9 +51,11 @@ public class ProduktDaoImplTest {
      */
     @Test
     public void testNacitajProdukt() {
-        if (produktDao.nacitajVsetkyProdukty().size() != 0) {
-            assertTrue(produktDao.nacitajProdukt(1) != null);
+        Produkt produkt = null;
+        if (!produktDao.nacitajVsetkyProdukty().isEmpty()) {
+            produkt = produktDao.nacitajProdukt(produktDao.nacitajVsetkyProdukty().get(0).getId());
         }
+        assertTrue(produkt != null);
     }
 
     /**
@@ -63,7 +64,7 @@ public class ProduktDaoImplTest {
     @Test
     public void testNacitajVsetkyProdukty() {
         List<Produkt> nacitanyList = produktDao.nacitajVsetkyProdukty();
-        assertTrue(nacitanyList.size() > 0);
+        assertTrue(nacitanyList != null);
     }
 
     /**
@@ -71,10 +72,6 @@ public class ProduktDaoImplTest {
      */
     @Test
     public void testUpravProdukt() {
-        System.out.println("upravProdukt");
-        int id = 0;
-        ProduktDaoImpl instance = null;
-        instance.upravProdukt(id);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -84,10 +81,18 @@ public class ProduktDaoImplTest {
      */
     @Test
     public void testOdoberProdukt() {
-        produktDao.pridajProdukt(new Produkt("rozok", 0.1, 0.2));
-        int pocetPred = produktDao.nacitajVsetkyProdukty().size();
-        produktDao.odoberProdukt(1);
-        assertTrue(pocetPred - 1 == produktDao.nacitajVsetkyProdukty().size());
+        Produkt produkt = new Produkt();
+        produktDao.pridajProdukt(new Produkt("TEST", 1, 2));
+        List<Produkt> zoznamProduktov = produktDao.nacitajVsetkyProdukty();
+        for (Produkt p : zoznamProduktov) {
+            if (p.getNazov().equals("TEST")) {
+                produkt = p;
+            }
+        }
+        int pocetPred = zoznamProduktov.size();
+        produktDao.odoberProdukt(produkt.getId());
+        int pocetPo = produktDao.nacitajVsetkyProdukty().size();
+        assertTrue(pocetPred - 1 == pocetPo);
     }
 
     /**
@@ -95,14 +100,11 @@ public class ProduktDaoImplTest {
      */
     @Test
     public void testVycisliZisk() {
-        System.out.println("vycisliZisk");
-        int id = 0;
-        ProduktDaoImpl instance = null;
-        double expResult = 0.0;
-        double result = instance.vycisliZisk(id);
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Produkt produkt = new Produkt("TEST", 1, 2);
+        produktDao.pridajProdukt(produkt);
+        List<Produkt> produkty = produktDao.nacitajVsetkyProdukty();
+        int idProduktu = produkty.get(produkty.size() - 1).getId();
+        assertTrue(1.0 == produktDao.vycisliZisk(idProduktu));
     }
 
 }
