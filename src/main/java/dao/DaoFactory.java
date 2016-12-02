@@ -18,7 +18,7 @@ public enum DaoFactory {
     private ProduktDao produktDao;
     private ZamestnanecDao zamestnanecDao;
 
-    private DaoFactory() {
+    public JdbcTemplate getJdbcTemplate() {
         try {
             OracleDataSource dataSource = new OracleDataSource();
             dataSource.setURL("jdbc:oracle:thin:@//localhost:1521/XE");
@@ -27,33 +27,45 @@ public enum DaoFactory {
 
             JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 
-            nakladDao = new NakladDaoImpl(jdbcTemplate);
-            prevadzkaDao = new PrevadzkaDaoImpl(jdbcTemplate);
-            prijemDao = new PrijemDaoImpl(jdbcTemplate);
-            produktDao = new ProduktDaoImpl(jdbcTemplate);
-            zamestnanecDao = new ZamestnanecDaoImpl(jdbcTemplate);
+            return jdbcTemplate;
         } catch (SQLException ex) {
             Logger.getLogger(DaoFactory.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return null;
     }
 
     public NakladDao getNakladDao() {
+        if (nakladDao == null) {
+            nakladDao = new NakladDaoImpl(getJdbcTemplate());
+        }
         return nakladDao;
     }
 
     public PrevadzkaDao getPrevadzkaDao() {
+        if (prevadzkaDao == null) {
+            prevadzkaDao = new PrevadzkaDaoImpl(getJdbcTemplate());
+        }
         return prevadzkaDao;
     }
 
     public PrijemDao getPrijemDao() {
+        if (prijemDao == null) {
+            prijemDao = new PrijemDaoImpl(getJdbcTemplate());
+        }
         return prijemDao;
     }
 
     public ProduktDao getProduktDao() {
+        if (produktDao == null) {
+            produktDao = new ProduktDaoImpl(getJdbcTemplate());
+        }
         return produktDao;
     }
 
     public ZamestnanecDao getZamestnanecDao() {
+        if (zamestnanecDao == null) {
+            zamestnanecDao = new ZamestnanecDaoImpl(getJdbcTemplate());
+        }
         return zamestnanecDao;
     }
 
