@@ -61,6 +61,8 @@ public class ProduktDaoImplTest {
         Integer id = list.get(list.size() - 1).getId();
 
         Produkt produkt = produktDao.nacitajProdukt(id);
+        
+        produktDao.odoberProdukt(id);
 
         assertTrue(produkt != null && produkt.getNazov().equals("TEST") && produkt.getNakupnaCena() == 0.0 && produkt.getPredajnaCena() == 0.0);
     }
