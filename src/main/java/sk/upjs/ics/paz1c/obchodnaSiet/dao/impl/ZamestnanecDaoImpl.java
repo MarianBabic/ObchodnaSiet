@@ -18,7 +18,7 @@ public class ZamestnanecDaoImpl implements ZamestnanecDao {
     
     @Override
     public void pridajZamestnanaca(Zamestnanec zamestnanec) {
-        String sql = "INSERT INTO zamestnanec (id, meno, priezvisko, prevadzka_id, datum_nastupu, plat_brutto) VALUES (zamestnanec_sequence.nextval,?,?,?,?,?,?)";
+        String sql = "INSERT INTO zamestnanec (id, meno, priezvisko, prevadzka_id, datum_nastupu, plat_brutto) VALUES (zamestnanec_sequence.nextval,?,?,?,?,?)";
         jdbcTemplate.update(sql, zamestnanec.getMeno(), zamestnanec.getPriezvisko(), zamestnanec.getPrevadzkaId(), zamestnanec.getDatumNastupu(), zamestnanec.getPlatBrutto());
     }
     
@@ -30,7 +30,7 @@ public class ZamestnanecDaoImpl implements ZamestnanecDao {
     
     @Override
     public List<Zamestnanec> nacitajVsetkychZamestnancov() {
-        String sql = "SELECT z.id, z.meno, z.priezvisko, , z.prevadzka_id, z.datum_nastupu, z.plat_brutto from zamestnanec z";
+        String sql = "SELECT z.id, z.meno, z.priezvisko, z.prevadzka_id, z.datum_nastupu, z.plat_brutto from zamestnanec z";
         return jdbcTemplate.query(sql, new ZamestnanecRowMapper());
     }
 
