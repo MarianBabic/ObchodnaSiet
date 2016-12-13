@@ -2,36 +2,35 @@ package sk.upjs.ics.paz1c.obchodnaSiet.entity;
 
 public class ProduktNaPredajni {
 
-    private Produkt produkt;
-    private Prevadzka prevadzka;
+    private int produktId;
+    private int prevadzkaId;
     private double zlava;
     private int kusy;
 
-    // for Spring
     public ProduktNaPredajni() {
     }
 
-    public ProduktNaPredajni(Produkt produkt, Prevadzka prevadzka, double zlava, int kusy) {
-        this.produkt = produkt;
-        this.prevadzka = prevadzka;
+    public ProduktNaPredajni(int produktId, int prevadzkaId, double zlava, int kusy) {
+        this.produktId = produktId;
+        this.prevadzkaId = prevadzkaId;
         this.zlava = zlava;
         this.kusy = kusy;
     }
 
-    public Produkt getProdukt() {
-        return produkt;
+    public int getProduktId() {
+        return produktId;
     }
 
-    public void setProdukt(Produkt produkt) {
-        this.produkt = produkt;
+    public void setProduktId(int produktId) {
+        this.produktId = produktId;
     }
 
-    public Prevadzka getPrevadzka() {
-        return prevadzka;
+    public int getPrevadzkaId() {
+        return prevadzkaId;
     }
 
-    public void setPrevadzka(Prevadzka prevadzka) {
-        this.prevadzka = prevadzka;
+    public void setPrevadzkaId(int prevadzkaId) {
+        this.prevadzkaId = prevadzkaId;
     }
 
     public double getZlava() {
@@ -52,7 +51,7 @@ public class ProduktNaPredajni {
 
     @Override
     public String toString() {
-        return "ProduktNaPredajni{" + "produkt=" + produkt + ", prevadzka=" + prevadzka + ", zlava=" + zlava + ", kusy=" + kusy + '}';
+        return "ProduktNaPredajni{" + "produktId=" + produktId + ", prevadzkaId=" + prevadzkaId + ", zlava=" + zlava + ", kusy=" + kusy + '}';
     }
 
 }

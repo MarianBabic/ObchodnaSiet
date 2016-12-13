@@ -5,17 +5,16 @@ import java.sql.Date;
 public class Naklad {
 
     private int id;
-    private Prevadzka prevadzka;
+    private int prevadzkaId;
     private String popis;
     private Date datum;
     private double suma;
 
-    // for Spring
     public Naklad() {
     }
 
-    public Naklad(Prevadzka prevadzka, String popis, Date datum, double suma) {
-        this.prevadzka = prevadzka;
+    public Naklad(int prevadzkaId, String popis, Date datum, double suma) {
+        this.prevadzkaId = prevadzkaId;
         this.popis = popis;
         this.datum = datum;
         this.suma = suma;
@@ -29,12 +28,12 @@ public class Naklad {
         this.id = id;
     }
 
-    public Prevadzka getPrevadzka() {
-        return prevadzka;
+    public int getPrevadzkaId() {
+        return prevadzkaId;
     }
 
-    public void setPrevadzka(Prevadzka prevadzka) {
-        this.prevadzka = prevadzka;
+    public void setPrevadzkaId(int prevadzkaId) {
+        this.prevadzkaId = prevadzkaId;
     }
 
     public String getPopis() {
@@ -63,7 +62,7 @@ public class Naklad {
 
     @Override
     public String toString() {
-        return "Naklad{" + "id=" + id + ", prevadzka=" + prevadzka + ", popis=" + popis + ", datum=" + datum + ", suma=" + suma + '}';
+        return "Naklad{" + "id=" + id + ", prevadzkaId=" + prevadzkaId + ", popis=" + popis + ", datum=" + datum + ", suma=" + suma + '}';
     }
 
 }

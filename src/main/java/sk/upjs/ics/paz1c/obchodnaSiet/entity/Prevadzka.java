@@ -7,7 +7,6 @@ public class Prevadzka {
     private String adresa;
     private String otvaracieHodiny;
 
-    // for Spring
     public Prevadzka() {
     }
 

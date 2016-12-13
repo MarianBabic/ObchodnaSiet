@@ -7,7 +7,6 @@ public class Produkt {
     private double nakupnaCena;
     private double predajnaCena;
 
-    // for Spring
     public Produkt() {
     }
 

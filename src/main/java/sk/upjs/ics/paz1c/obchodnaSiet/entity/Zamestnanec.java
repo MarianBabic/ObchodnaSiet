@@ -1,25 +1,24 @@
 package sk.upjs.ics.paz1c.obchodnaSiet.entity;
 
+import java.sql.Date;
+
 public class Zamestnanec {
 
     private int id;
     private String meno;
     private String priezvisko;
-    private Prevadzka prevadzka;
-    private double odpracovanyCas;
-    private double ziskZPredaja;
+    private int prevadzkaId;
+    private Date datumNastupu;
     private double platBrutto;
 
-    // for Spring
     public Zamestnanec() {
     }
 
-    public Zamestnanec(String meno, String priezvisko, Prevadzka prevadzka, double odpracovanyCas, double ziskZPredaja, double platBrutto) {
+    public Zamestnanec(String meno, String priezvisko, int prevadzkaId, Date datumNastupu, double platBrutto) {
         this.meno = meno;
         this.priezvisko = priezvisko;
-        this.prevadzka = prevadzka;
-        this.odpracovanyCas = odpracovanyCas;
-        this.ziskZPredaja = ziskZPredaja;
+        this.prevadzkaId = prevadzkaId;
+        this.datumNastupu = datumNastupu;
         this.platBrutto = platBrutto;
     }
 
@@ -47,28 +46,20 @@ public class Zamestnanec {
         this.priezvisko = priezvisko;
     }
 
-    public Prevadzka getPrevadzka() {
-        return prevadzka;
+    public int getPrevadzkaId() {
+        return prevadzkaId;
     }
 
-    public void setPrevadzka(Prevadzka prevadzka) {
-        this.prevadzka = prevadzka;
+    public void setPrevadzkaId(int prevadzkaId) {
+        this.prevadzkaId = prevadzkaId;
     }
 
-    public double getOdpracovanyCas() {
-        return odpracovanyCas;
+    public Date getDatumNastupu() {
+        return datumNastupu;
     }
 
-    public void setOdpracovanyCas(double odpracovanyCas) {
-        this.odpracovanyCas = odpracovanyCas;
-    }
-
-    public double getZiskZPredaja() {
-        return ziskZPredaja;
-    }
-
-    public void setZiskZPredaja(double ziskZPredaja) {
-        this.ziskZPredaja = ziskZPredaja;
+    public void setDatumNastupu(Date datumNastupu) {
+        this.datumNastupu = datumNastupu;
     }
 
     public double getPlatBrutto() {
@@ -81,7 +72,7 @@ public class Zamestnanec {
 
     @Override
     public String toString() {
-        return "Zamestnanec{" + "id=" + id + ", meno=" + meno + ", priezvisko=" + priezvisko + ", prevadzka=" + prevadzka + ", odpracovanyCas=" + odpracovanyCas + ", ziskZPredaja=" + ziskZPredaja + ", platBrutto=" + platBrutto + '}';
+        return "Zamestnanec{" + "id=" + id + ", meno=" + meno + ", priezvisko=" + priezvisko + ", prevadzkaId=" + prevadzkaId + ", datumNastupu=" + datumNastupu + ", platBrutto=" + platBrutto + '}';
     }
 
 }
