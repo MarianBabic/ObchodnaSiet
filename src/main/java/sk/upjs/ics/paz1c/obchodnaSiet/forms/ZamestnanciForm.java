@@ -175,7 +175,7 @@ public class ZamestnanciForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new PridatZamestnancaNaPrevadzkuForm().setVisible(true);
+//        new PridatZamestnancaNaPrevadzkuForm().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -190,7 +190,7 @@ public class ZamestnanciForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        new OdobratZamestnancaDialogForm(this, true).setVisible(true);
+//        new OdobratZamestnancaDialogForm(this, true).setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void vsetciZamestnanciRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vsetciZamestnanciRadioButtonActionPerformed

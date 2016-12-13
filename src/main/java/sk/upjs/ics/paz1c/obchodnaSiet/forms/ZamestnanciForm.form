@@ -212,7 +212,6 @@
         </Property>
         <Property name="selected" type="boolean" value="true"/>
         <Property name="text" type="java.lang.String" value="V&#x161;etci zamestnanci"/>
-        <Property name="actionCommand" type="java.lang.String" value="V&#x161;etci zamestnanci"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="vsetciZamestnanciRadioButtonActionPerformed"/>
@@ -227,7 +226,6 @@
           <Font name="Arial" size="18" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Pod&#x13e;a prev&#xe1;dzky"/>
-        <Property name="actionCommand" type="java.lang.String" value="Pod&#x13e;a prev&#xe1;dzky"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="zamestnanciNaPrevadzkeRadioButtonActionPerformed"/>

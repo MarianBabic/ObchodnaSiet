@@ -5,6 +5,9 @@
  */
 package sk.upjs.ics.paz1c.obchodnaSiet.forms;
 
+import sk.upjs.ics.paz1c.obchodnaSiet.dao.DaoFactory;
+import sk.upjs.ics.paz1c.obchodnaSiet.entity.Nastavenia;
+
 /**
  *
  * @author Student
@@ -65,6 +68,11 @@ public class NastaveniaForm extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jButton2.setText("Uložiť zmeny");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -113,6 +121,17 @@ public class NastaveniaForm extends javax.swing.JFrame {
         new HlavneOknoForm().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        Nastavenia nastavenia = new Nastavenia();
+        nastavenia.setNazovObchodnejSiete(nazovObchodnejSieteTextField.getText());
+        nastavenia.setMena(menaTextField.getText());
+
+        DaoFactory.INSTANCE.getNastaveniaDao().pridajUpravNastavenia(nastavenia);
+
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
