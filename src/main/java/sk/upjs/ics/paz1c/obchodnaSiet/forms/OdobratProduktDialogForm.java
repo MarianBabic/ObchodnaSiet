@@ -46,6 +46,7 @@ public class OdobratProduktDialogForm extends javax.swing.JDialog {
         jLabel2.setText("Názov produktu:");
 
         nazovProduktuLabel.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        nazovProduktuLabel.setText("nazov");
 
         jButton1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 0, 0));
