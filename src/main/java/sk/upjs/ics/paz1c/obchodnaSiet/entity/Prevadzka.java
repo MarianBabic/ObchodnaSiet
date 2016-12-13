@@ -2,7 +2,7 @@ package sk.upjs.ics.paz1c.obchodnaSiet.entity;
 
 public class Prevadzka {
 
-    private int id;
+    private Integer id;
     private String nazov;
     private String adresa;
     private String otvaracieHodiny;
@@ -16,11 +16,11 @@ public class Prevadzka {
         this.otvaracieHodiny = otvaracieHodiny;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

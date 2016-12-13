@@ -7,14 +7,14 @@ public interface PrevadzkaDao {
 
     void pridajPrevadzku(Prevadzka prevadzka);
 
-    Prevadzka nacitajPrevadzku(int id);
+    Prevadzka nacitajPrevadzku(Integer id);
 
     List<Prevadzka> nacitajVsetkyPrevadzky();
 
-    void upravPrevadzku(int id);
+    void upravPrevadzku(Integer id);
 
-    void odoberPrevadzku(int id);
+    void odoberPrevadzku(Integer id);
 
-    double vycisliZisk(int id);
+    double vycisliZisk(Integer id);
 
 }

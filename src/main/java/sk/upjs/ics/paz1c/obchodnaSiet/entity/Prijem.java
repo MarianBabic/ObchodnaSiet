@@ -4,8 +4,8 @@ import java.sql.Date;
 
 public class Prijem {
 
-    private int id;
-    private int prevadzkaId;
+    private Integer id;
+    private Integer prevadzkaId;
     private String popis;
     private Date datum;
     private double suma;
@@ -13,26 +13,26 @@ public class Prijem {
     public Prijem() {
     }
 
-    public Prijem(int prevadzkaId, String popis, Date datum, double suma) {
+    public Prijem(Integer prevadzkaId, String popis, Date datum, double suma) {
         this.prevadzkaId = prevadzkaId;
         this.popis = popis;
         this.datum = datum;
         this.suma = suma;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getPrevadzkaId() {
+    public Integer getPrevadzkaId() {
         return prevadzkaId;
     }
 
-    public void setPrevadzkaId(int prevadzkaId) {
+    public void setPrevadzkaId(Integer prevadzkaId) {
         this.prevadzkaId = prevadzkaId;
     }
 

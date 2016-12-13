@@ -7,12 +7,12 @@ public interface ZamestnanecDao {
 
     void pridajZamestnanaca(Zamestnanec zamestnanec);
 
-    Zamestnanec nacitajZamestnanca(int id);
+    Zamestnanec nacitajZamestnanca(Integer id);
 
     List<Zamestnanec> nacitajVsetkychZamestnancov();
 
-    void upravZamestnanca(int id);
+    void upravZamestnanca(Integer id);
 
-    void odoberZamestnanca(int id);
+    void odoberZamestnanca(Integer id);
 
 }

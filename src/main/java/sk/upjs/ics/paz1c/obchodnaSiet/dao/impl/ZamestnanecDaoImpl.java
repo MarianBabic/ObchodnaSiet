@@ -23,7 +23,7 @@ public class ZamestnanecDaoImpl implements ZamestnanecDao {
     }
     
     @Override
-    public Zamestnanec nacitajZamestnanca(int id) {
+    public Zamestnanec nacitajZamestnanca(Integer id) {
         String sql = "SELECT z.id, z.meno, z.priezvisko, z.prevadzka_id, z.datum_nastupu, z.plat_brutto from zamestnanec z WHERE z.id=" + id;
         return jdbcTemplate.queryForObject(sql, new ZamestnanecRowMapper());
     }
@@ -36,12 +36,12 @@ public class ZamestnanecDaoImpl implements ZamestnanecDao {
 
     // TODO
     @Override
-    public void upravZamestnanca(int id) {
+    public void upravZamestnanca(Integer id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     @Override
-    public void odoberZamestnanca(int id) {
+    public void odoberZamestnanca(Integer id) {
         String sql = "DELETE FROM zamestnanec WHERE id=" + id;
         jdbcTemplate.execute(sql);
     }

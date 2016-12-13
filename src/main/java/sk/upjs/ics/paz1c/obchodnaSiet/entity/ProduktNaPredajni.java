@@ -2,34 +2,34 @@ package sk.upjs.ics.paz1c.obchodnaSiet.entity;
 
 public class ProduktNaPredajni {
 
-    private int produktId;
-    private int prevadzkaId;
+    private Integer produktId;
+    private Integer prevadzkaId;
     private double zlava;
     private int kusy;
 
     public ProduktNaPredajni() {
     }
 
-    public ProduktNaPredajni(int produktId, int prevadzkaId, double zlava, int kusy) {
+    public ProduktNaPredajni(Integer produktId, Integer prevadzkaId, double zlava, int kusy) {
         this.produktId = produktId;
         this.prevadzkaId = prevadzkaId;
         this.zlava = zlava;
         this.kusy = kusy;
     }
 
-    public int getProduktId() {
+    public Integer getProduktId() {
         return produktId;
     }
 
-    public void setProduktId(int produktId) {
+    public void setProduktId(Integer produktId) {
         this.produktId = produktId;
     }
 
-    public int getPrevadzkaId() {
+    public Integer getPrevadzkaId() {
         return prevadzkaId;
     }
 
-    public void setPrevadzkaId(int prevadzkaId) {
+    public void setPrevadzkaId(Integer prevadzkaId) {
         this.prevadzkaId = prevadzkaId;
     }
 

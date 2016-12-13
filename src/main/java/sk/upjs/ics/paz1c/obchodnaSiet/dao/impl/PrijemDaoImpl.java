@@ -23,7 +23,7 @@ public class PrijemDaoImpl implements PrijemDao {
     }
 
     @Override
-    public Prijem nacitajPrijem(int id) {
+    public Prijem nacitajPrijem(Integer id) {
         String sql = "SELECT p.id, p.prevadzka_id, p.popis, p.datum, p.suma from prijem p WHERE p.id=" + id;
         return jdbcTemplate.queryForObject(sql, new PrijemRowMapper());
     }
@@ -36,12 +36,12 @@ public class PrijemDaoImpl implements PrijemDao {
 
     // TODO
     @Override
-    public void upravPrijem(int id) {
+    public void upravPrijem(Integer id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void odoberPrijem(int id) {
+    public void odoberPrijem(Integer id) {
         String sql = "DELETE FROM prijem WHERE id=" + id;
         jdbcTemplate.execute(sql);
     }

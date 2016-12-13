@@ -2,7 +2,7 @@ package sk.upjs.ics.paz1c.obchodnaSiet.entity;
 
 public class Produkt {
 
-    private int id;
+    private Integer id;
     private String nazov;
     private double nakupnaCena;
     private double predajnaCena;
@@ -16,11 +16,11 @@ public class Produkt {
         this.predajnaCena = predajnaCena;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

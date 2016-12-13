@@ -7,14 +7,14 @@ public interface ProduktDao {
 
     void pridajProdukt(Produkt produkt);
 
-    Produkt nacitajProdukt(int id);
+    Produkt nacitajProdukt(Integer id);
 
     List<Produkt> nacitajVsetkyProdukty();
 
-    void upravProdukt(int id);
+    void upravProdukt(Integer id);
 
-    void odoberProdukt(int id);
+    void odoberProdukt(Integer id);
 
-    double vycisliZisk(int id);
+    double vycisliZisk(Integer id);
 
 }

@@ -7,12 +7,12 @@ public interface PrijemDao {
 
     void pridajPrijem(Prijem prijem);
 
-    Prijem nacitajPrijem(int id);
+    Prijem nacitajPrijem(Integer id);
 
     List<Prijem> nacitajVsetkyPrijmy();
 
-    void upravPrijem(int id);
+    void upravPrijem(Integer id);
 
-    void odoberPrijem(int id);
+    void odoberPrijem(Integer id);
 
 }

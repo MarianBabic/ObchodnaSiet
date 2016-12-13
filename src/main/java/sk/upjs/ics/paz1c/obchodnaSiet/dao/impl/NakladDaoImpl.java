@@ -23,7 +23,7 @@ public class NakladDaoImpl implements NakladDao {
     }
 
     @Override
-    public Naklad nacitajNaklad(int id) {
+    public Naklad nacitajNaklad(Integer id) {
         String sql = "SELECT n.id, n.prevadzka_id, n.popis, n.datum, n.suma from naklad n WHERE n.id=" + id;
         return jdbcTemplate.queryForObject(sql, new NakladRowMapper());
     }
@@ -36,12 +36,12 @@ public class NakladDaoImpl implements NakladDao {
 
     // TODO
     @Override
-    public void upravNaklad(int id) {
+    public void upravNaklad(Integer id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void odoberNaklad(int id) {
+    public void odoberNaklad(Integer id) {
         String sql = "DELETE FROM naklad WHERE id=" + id;
         jdbcTemplate.execute(sql);
     }

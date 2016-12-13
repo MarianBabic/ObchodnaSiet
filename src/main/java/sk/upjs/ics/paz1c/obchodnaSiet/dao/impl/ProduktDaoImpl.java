@@ -21,7 +21,7 @@ public class ProduktDaoImpl implements ProduktDao {
     }
 
     @Override
-    public Produkt nacitajProdukt(int id) {
+    public Produkt nacitajProdukt(Integer id) {
         String sql = "SELECT * FROM produkt WHERE id =" + id;
         BeanPropertyRowMapper<Produkt> rowMapper = new BeanPropertyRowMapper<>(Produkt.class);
         return jdbcTemplate.queryForObject(sql, rowMapper);
@@ -36,18 +36,18 @@ public class ProduktDaoImpl implements ProduktDao {
 
     // TODO
     @Override
-    public void upravProdukt(int id) {
+    public void upravProdukt(Integer id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void odoberProdukt(int id) {
+    public void odoberProdukt(Integer id) {
         String sql = "DELETE FROM produkt WHERE id=" + id;
         jdbcTemplate.execute(sql);
     }
 
     @Override
-    public double vycisliZisk(int id) {
+    public double vycisliZisk(Integer id) {
         String sql = "SELECT (predajna_cena - nakupna_cena) as zisk FROM produkt WHERE id=" + id;
         return jdbcTemplate.queryForObject(sql, Double.class);
     }

@@ -7,12 +7,12 @@ public interface NakladDao {
 
     void pridajNaklad(Naklad naklad);
 
-    Naklad nacitajNaklad(int id);
+    Naklad nacitajNaklad(Integer id);
 
     List<Naklad> nacitajVsetkyNaklady();
 
-    void upravNaklad(int id);
+    void upravNaklad(Integer id);
 
-    void odoberNaklad(int id);
+    void odoberNaklad(Integer id);
 
 }

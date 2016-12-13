@@ -21,7 +21,7 @@ public class PrevadzkaDaoImpl implements PrevadzkaDao {
     }
 
     @Override
-    public Prevadzka nacitajPrevadzku(int id) {
+    public Prevadzka nacitajPrevadzku(Integer id) {
         String sql = "SELECT * FROM prevadzka WHERE id=" + id;
         BeanPropertyRowMapper<Prevadzka> rowMapper = new BeanPropertyRowMapper<>(Prevadzka.class);
         return jdbcTemplate.queryForObject(sql, rowMapper);
@@ -37,20 +37,20 @@ public class PrevadzkaDaoImpl implements PrevadzkaDao {
     }
 
     @Override
-    public void upravPrevadzku(int id) {
+    public void upravPrevadzku(Integer id) {
         Prevadzka p = nacitajPrevadzku(id);
         String sql = "UPDATE prevadzka SET nazov=?,adresa=?,otvaracie_hodiny=? WHERE id=" + id;
         jdbcTemplate.update(sql, p.getNazov(), p.getAdresa(), p.getOtvaracieHodiny());
     }
 
     @Override
-    public void odoberPrevadzku(int id) {
+    public void odoberPrevadzku(Integer id) {
         String sql = "DELETE FROM prevadzka WHERE id=" + id;
         jdbcTemplate.execute(sql);
     }
 
     @Override
-    public double vycisliZisk(int id) {
+    public double vycisliZisk(Integer id) {
         String sql1 = "SELECT SUM(suma) FROM naklad WHERE prevadzka_id=" + id;
         Double naklad = jdbcTemplate.queryForObject(sql1, Double.class);
 

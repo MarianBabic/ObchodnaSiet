@@ -7,12 +7,12 @@ public interface ProduktNaPredajniDao {
     
     void pridajProduktNaPredajnu(ProduktNaPredajni produktNaPredajni);
     
-    ProduktNaPredajni nacitajProduktNaPredajni(int produktId, int prevadzkaId);
+    ProduktNaPredajni nacitajProduktNaPredajni(Integer produktId, Integer prevadzkaId);
     
     List<ProduktNaPredajni> nacitajVsetkyProduktyNaPredajniach();
     
-    void upravProduktNaPredajni(int produktId, int prevadzkaId);
+    void upravProduktNaPredajni(Integer produktId, Integer prevadzkaId);
     
-    void odoberProduktZPredajne(int produktId, int prevadzkaId);
+    void odoberProduktZPredajne(Integer produktId, Integer prevadzkaId);
     
 }

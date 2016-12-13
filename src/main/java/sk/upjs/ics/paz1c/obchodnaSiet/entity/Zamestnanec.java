@@ -4,17 +4,17 @@ import java.sql.Date;
 
 public class Zamestnanec {
 
-    private int id;
+    private Integer id;
     private String meno;
     private String priezvisko;
-    private int prevadzkaId;
+    private Integer prevadzkaId;
     private Date datumNastupu;
     private double platBrutto;
 
     public Zamestnanec() {
     }
 
-    public Zamestnanec(String meno, String priezvisko, int prevadzkaId, Date datumNastupu, double platBrutto) {
+    public Zamestnanec(String meno, String priezvisko, Integer prevadzkaId, Date datumNastupu, double platBrutto) {
         this.meno = meno;
         this.priezvisko = priezvisko;
         this.prevadzkaId = prevadzkaId;
@@ -22,11 +22,11 @@ public class Zamestnanec {
         this.platBrutto = platBrutto;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -46,11 +46,11 @@ public class Zamestnanec {
         this.priezvisko = priezvisko;
     }
 
-    public int getPrevadzkaId() {
+    public Integer getPrevadzkaId() {
         return prevadzkaId;
     }
 
-    public void setPrevadzkaId(int prevadzkaId) {
+    public void setPrevadzkaId(Integer prevadzkaId) {
         this.prevadzkaId = prevadzkaId;
     }
 
