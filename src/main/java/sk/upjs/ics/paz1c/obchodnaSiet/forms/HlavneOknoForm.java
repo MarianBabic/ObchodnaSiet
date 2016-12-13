@@ -5,6 +5,9 @@
  */
 package sk.upjs.ics.paz1c.obchodnaSiet.forms;
 
+import sk.upjs.ics.paz1c.obchodnaSiet.dao.DaoFactory;
+import sk.upjs.ics.paz1c.obchodnaSiet.entity.Nastavenia;
+
 /**
  *
  * @author Student
@@ -17,6 +20,9 @@ public class HlavneOknoForm extends javax.swing.JFrame {
     public HlavneOknoForm() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
+        Nastavenia nastavenia= DaoFactory.INSTANCE.getNastaveniaDao().nacitajNastavenia(1);
+        nazovObchodnejSieteLabel.setText(nastavenia.getNazovObchodnejSiete());
     }
 
     /**
