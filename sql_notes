@@ -21,3 +21,4 @@ GRANT ALL PRIVILEGES TO obchodna_siet;
 CREATE SCHEMA AUTHORIZATION obchodna_siet;
 
 produkt_sequence.nextval treba pridat do insertu, kedze neexistuje autoincrement
+SELECT * FROM USER_SEQUENCES
