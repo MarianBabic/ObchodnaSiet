@@ -3,6 +3,7 @@ package sk.upjs.ics.paz1c.obchodnaSiet.dao.impl;
 import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.ProduktNaPredajniDao;
 import sk.upjs.ics.paz1c.obchodnaSiet.entity.ProduktNaPredajni;
 import java.util.List;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 public class ProduktNaPredajniDaoImpl implements ProduktNaPredajniDao {
@@ -13,22 +14,24 @@ public class ProduktNaPredajniDaoImpl implements ProduktNaPredajniDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    // TODO
     @Override
-    public void pridajProduktNaPredajnu(int produktId, int prevadzkaId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void pridajProduktNaPredajnu(ProduktNaPredajni pnp) {
+        String sql = "INSERT INTO produkt_na_predajni (produkt_id, prevadzka_id, zlava, kusy) VALUES (?,?,?,?)";
+        jdbcTemplate.update(sql, pnp.getProduktId(), pnp.getPrevadzkaId(), pnp.getZlava(), pnp.getKusy());
     }
 
-    // TODO
     @Override
     public ProduktNaPredajni nacitajProduktNaPredajni(int produktId, int prevadzkaId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "SELECT * FROM produkt_na_predajni WHERE produkt_id=" + produktId + " AND prevadzka_id=" + prevadzkaId;
+        BeanPropertyRowMapper<ProduktNaPredajni> rowMapper = new BeanPropertyRowMapper<>(ProduktNaPredajni.class);
+        return jdbcTemplate.queryForObject(sql, rowMapper);
     }
 
-    // TODO
     @Override
     public List<ProduktNaPredajni> nacitajVsetkyProduktyNaPredajniach() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "SELECT * FROM produkt_na_predajni";
+        BeanPropertyRowMapper<ProduktNaPredajni> rowMapper = new BeanPropertyRowMapper<>(ProduktNaPredajni.class);
+        return jdbcTemplate.query(sql, rowMapper);
     }
 
     // TODO
@@ -37,10 +40,10 @@ public class ProduktNaPredajniDaoImpl implements ProduktNaPredajniDao {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    // TODO
     @Override
     public void odoberProduktZPredajne(int produktId, int prevadzkaId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "DELETE FROM produkt_na_predajni WHERE produkt_id=" + produktId + " AND prevadzka_id=" + prevadzkaId;
+        jdbcTemplate.execute(sql);
     }
 
 }

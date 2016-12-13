@@ -6,8 +6,10 @@ import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.NakladDao;
 import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.PrevadzkaDao;
 import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.PrijemDao;
 import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.ProduktDao;
+import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.ProduktNaPredajniDao;
 import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.ZamestnanecDao;
 import sk.upjs.ics.paz1c.obchodnaSiet.entity.Prevadzka;
+import sk.upjs.ics.paz1c.obchodnaSiet.entity.ProduktNaPredajni;
 import sk.upjs.ics.paz1c.obchodnaSiet.entity.Zamestnanec;
 
 public class Main {
@@ -18,14 +20,8 @@ public class Main {
         NakladDao nDao = DaoFactory.INSTANCE.getNakladDao();
         PrijemDao pDao = DaoFactory.INSTANCE.getPrijemDao();
         ProduktDao proDao = DaoFactory.INSTANCE.getProduktDao();
+        ProduktNaPredajniDao pnpDao = DaoFactory.INSTANCE.getProduktNaPredajniDao();
         ZamestnanecDao zDao = DaoFactory.INSTANCE.getZamestnanecDao();
-
-        Prevadzka p = new Prevadzka("nazov", "adresa", "non-stop");
-        pd.pridajPrevadzku(p);
-        System.out.println(pd.nacitajPrevadzku(141));
-        System.out.println(pd.nacitajVsetkyPrevadzky());
-        pd.odoberPrevadzku(142);
-        System.out.println(pd.vycisliZisk(141));
 
         // TODO
         pd.upravPrevadzku(141);
@@ -36,8 +32,10 @@ public class Main {
 //TODO
 //proDao.upravProdukt(101);
 // TODO
+//pnpDao.upravProduktNaPredajni(101, 141);
+// TODO
 //zDao.upravZamestnanca(61);
-        
+
     }
 
 }

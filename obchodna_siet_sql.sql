@@ -39,7 +39,6 @@ CREATE TABLE produkt_na_predajni (
     kusy NUMBER,
     PRIMARY KEY(produkt_id, prevadzka_id)
 );
-CREATE SEQUENCE produkt_na_predajni_sequence START WITH 1 INCREMENT BY 1;
 
 CREATE TABLE zamestnanec (
     id NUMBER PRIMARY KEY,
