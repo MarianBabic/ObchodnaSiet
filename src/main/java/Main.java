@@ -29,7 +29,10 @@ public class Main {
     }
 
     public static void main(String[] args) {
-
+        
+        PrevadzkaDao prevadzkaDao = DaoFactory.INSTANCE.getPrevadzkaDao();
+        prevadzkaDao.pridajPrevadzku(new Prevadzka("TEST", "TEST", "TEST"));
+        
         otestovat();
 
 //TODO        produkt na predajni
