@@ -11,7 +11,7 @@ public interface PrevadzkaDao {
 
     List<Prevadzka> nacitajVsetkyPrevadzky();
 
-    void upravPrevadzku(int id, String nazov, String adresa, String otvaracieHodiny);
+    void upravPrevadzku(int id);
 
     void odoberPrevadzku(int id);
 

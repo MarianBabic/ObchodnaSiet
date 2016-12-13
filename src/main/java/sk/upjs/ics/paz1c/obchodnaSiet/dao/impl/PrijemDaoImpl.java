@@ -1,7 +1,6 @@
 package sk.upjs.ics.paz1c.obchodnaSiet.dao.impl;
 
 import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.PrijemDao;
-import sk.upjs.ics.paz1c.obchodnaSiet.entity.Prevadzka;
 import sk.upjs.ics.paz1c.obchodnaSiet.entity.Prijem;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,18 +19,18 @@ public class PrijemDaoImpl implements PrijemDao {
     @Override
     public void pridajPrijem(Prijem prijem) {
         String sql = "INSERT INTO prijem (id, prevadzka_id, popis, datum, suma) VALUES (prijem_sequence.nextval,?,?,?,?)";
-        jdbcTemplate.update(sql, prijem.getPrevadzka().getId(), prijem.getPopis(), prijem.getDatum(), prijem.getSuma());
+        jdbcTemplate.update(sql, prijem.getPrevadzkaId(), prijem.getPopis(), prijem.getDatum(), prijem.getSuma());
     }
 
     @Override
     public Prijem nacitajPrijem(int id) {
-        String sql = "SELECT p.id, pr.id AS pr_id, pr.nazov AS pr_nazov, pr.adresa AS pr_adresa, pr.otvaracie_hodiny AS pr_otvaracie_hodiny, p.popis, p.datum, p.suma from prijem p JOIN prevadzka pr ON pr.id=p.prevadzka_id WHERE p.id=" + id;
+        String sql = "SELECT p.id, p.prevadzka_id, p.popis, p.datum, p.suma from prijem p WHERE p.id=" + id;
         return jdbcTemplate.queryForObject(sql, new PrijemRowMapper());
     }
 
     @Override
     public List<Prijem> nacitajVsetkyPrijmy() {
-        String sql = "SELECT p.id, pr.id AS pr_id, pr.nazov AS pr_nazov, pr.adresa AS pr_adresa, pr.otvaracie_hodiny AS pr_otvaracie_hodiny, p.popis, p.datum, p.suma from prijem p JOIN prevadzka pr ON pr.id=p.prevadzka_id";
+        String sql = "SELECT p.id, p.prevadzka_id, p.popis, p.datum, p.suma from prijem p";
         return jdbcTemplate.query(sql, new PrijemRowMapper());
     }
 
@@ -53,14 +52,7 @@ public class PrijemDaoImpl implements PrijemDao {
         public Prijem mapRow(ResultSet rs, int i) throws SQLException {
             Prijem prijem = new Prijem();
             prijem.setId(rs.getInt("id"));
-
-            Prevadzka prevadzka = new Prevadzka();
-            prevadzka.setId(rs.getInt("pr_id"));
-            prevadzka.setNazov(rs.getString("pr_nazov"));
-            prevadzka.setAdresa(rs.getString("pr_adresa"));
-            prevadzka.setOtvaracieHodiny(rs.getString("pr_otvaracie_hodiny"));
-
-            prijem.setPrevadzka(prevadzka);
+            prijem.setPrevadzkaId(rs.getInt("prevadzka_id"));
             prijem.setPopis(rs.getString("popis"));
             prijem.setDatum(rs.getDate("datum"));
             prijem.setSuma(rs.getDouble("suma"));

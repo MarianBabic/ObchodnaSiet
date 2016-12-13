@@ -15,6 +15,4 @@ public interface ZamestnanecDao {
 
     void odoberZamestnanca(int id);
 
-    double vycisliZisk(int id);
-
 }

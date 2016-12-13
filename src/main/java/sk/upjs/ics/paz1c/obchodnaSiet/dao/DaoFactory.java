@@ -1,15 +1,7 @@
 package sk.upjs.ics.paz1c.obchodnaSiet.dao;
 
-import sk.upjs.ics.paz1c.obchodnaSiet.dao.impl.PrijemDaoImpl;
-import sk.upjs.ics.paz1c.obchodnaSiet.dao.impl.ZamestnanecDaoImpl;
-import sk.upjs.ics.paz1c.obchodnaSiet.dao.impl.NakladDaoImpl;
-import sk.upjs.ics.paz1c.obchodnaSiet.dao.impl.ProduktDaoImpl;
-import sk.upjs.ics.paz1c.obchodnaSiet.dao.impl.PrevadzkaDaoImpl;
-import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.NakladDao;
-import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.PrijemDao;
-import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.ZamestnanecDao;
-import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.PrevadzkaDao;
-import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.ProduktDao;
+import sk.upjs.ics.paz1c.obchodnaSiet.dao.impl.*;
+import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.*;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,6 +16,7 @@ public enum DaoFactory {
     private PrevadzkaDao prevadzkaDao;
     private PrijemDao prijemDao;
     private ProduktDao produktDao;
+    private ProduktNaPredajniDao produktNaPredajniDao;
     private ZamestnanecDao zamestnanecDao;
 
     public JdbcTemplate getJdbcTemplate() {
@@ -68,6 +61,13 @@ public enum DaoFactory {
             produktDao = new ProduktDaoImpl(getJdbcTemplate());
         }
         return produktDao;
+    }
+    
+    public ProduktNaPredajniDao getProduktNaPredajniDao() {
+        if(produktNaPredajniDao == null) {
+            produktNaPredajniDao = new ProduktNaPredajniDaoImpl(getJdbcTemplate());
+        }
+        return produktNaPredajniDao;
     }
 
     public ZamestnanecDao getZamestnanecDao() {

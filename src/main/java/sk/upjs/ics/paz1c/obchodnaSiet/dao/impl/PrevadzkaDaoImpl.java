@@ -37,9 +37,10 @@ public class PrevadzkaDaoImpl implements PrevadzkaDao {
     }
 
     @Override
-    public void upravPrevadzku(int id, String nazov, String adresa, String otvaracieHodiny) {
+    public void upravPrevadzku(int id) {
+        Prevadzka p = nacitajPrevadzku(id);
         String sql = "UPDATE prevadzka SET nazov=?,adresa=?,otvaracie_hodiny=? WHERE id=" + id;
-        jdbcTemplate.update(sql, nazov, adresa, otvaracieHodiny);
+        jdbcTemplate.update(sql, p.getNazov(), p.getAdresa(), p.getOtvaracieHodiny());
     }
 
     @Override
