@@ -13,6 +13,7 @@ public enum DaoFactory {
     INSTANCE;
 
     private NakladDao nakladDao;
+    private NastaveniaDao nastaveniaDao;
     private PrevadzkaDao prevadzkaDao;
     private PrijemDao prijemDao;
     private ProduktDao produktDao;
@@ -42,6 +43,13 @@ public enum DaoFactory {
         return nakladDao;
     }
 
+    public NastaveniaDao getNastaveniaDao() {
+        if (nastaveniaDao == null) {
+            nastaveniaDao = new NastaveniaDaoImpl(getJdbcTemplate());
+        }
+        return nastaveniaDao;
+    }
+
     public PrevadzkaDao getPrevadzkaDao() {
         if (prevadzkaDao == null) {
             prevadzkaDao = new PrevadzkaDaoImpl(getJdbcTemplate());
@@ -62,9 +70,9 @@ public enum DaoFactory {
         }
         return produktDao;
     }
-    
+
     public ProduktNaPredajniDao getProduktNaPredajniDao() {
-        if(produktNaPredajniDao == null) {
+        if (produktNaPredajniDao == null) {
             produktNaPredajniDao = new ProduktNaPredajniDaoImpl(getJdbcTemplate());
         }
         return produktNaPredajniDao;

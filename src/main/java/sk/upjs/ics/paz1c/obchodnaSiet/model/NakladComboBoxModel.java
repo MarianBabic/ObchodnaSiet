@@ -1,5 +1,8 @@
 package sk.upjs.ics.paz1c.obchodnaSiet.model;
 
-public class NakladComboBoxModel {
+import javax.swing.DefaultComboBoxModel;
+import sk.upjs.ics.paz1c.obchodnaSiet.entity.Naklad;
+
+public class NakladComboBoxModel extends DefaultComboBoxModel<Naklad> {
     
 }
