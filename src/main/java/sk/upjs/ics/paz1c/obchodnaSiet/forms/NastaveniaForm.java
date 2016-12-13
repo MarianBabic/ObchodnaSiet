@@ -1,10 +1,10 @@
 package sk.upjs.ics.paz1c.obchodnaSiet.forms;
 
-import sk.upjs.ics.paz1c.obchodnaSiet.dao.DaoFactory;
-import sk.upjs.ics.paz1c.obchodnaSiet.entity.Nastavenia;
-
 public class NastaveniaForm extends javax.swing.JFrame {
 
+    /**
+     * Creates new form NastaveniaForm
+     */
     public NastaveniaForm() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -19,58 +19,43 @@ public class NastaveniaForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        nastaveniaLabel = new javax.swing.JLabel();
-        nazovObchodnejSieteLabel = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         nazovObchodnejSieteTextField = new javax.swing.JTextField();
-        menaLabel = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         menaTextField = new javax.swing.JTextField();
-        spatButton = new javax.swing.JButton();
-        ulozitZmenyButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        nastaveniaLabel.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        nastaveniaLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nastaveniaLabel.setText("Nastavenia");
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Nastavenia");
 
-        nazovObchodnejSieteLabel.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        nazovObchodnejSieteLabel.setText("Názov obchodnej siete:");
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel2.setText("Názov obchodnej siete:");
 
         nazovObchodnejSieteTextField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         nazovObchodnejSieteTextField.setToolTipText("Názov obchodnej siete");
-        nazovObchodnejSieteTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nazovObchodnejSieteTextFieldActionPerformed(evt);
-            }
-        });
 
-        menaLabel.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        menaLabel.setText("Mena:");
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel3.setText("Mena:");
 
         menaTextField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         menaTextField.setToolTipText("Mena obchodnej siete (max 5 znakov)");
-        menaTextField.addActionListener(new java.awt.event.ActionListener() {
+
+        jButton1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jButton1.setText("Späť");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menaTextFieldActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
-        spatButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        spatButton.setText("Späť");
-        spatButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                spatButtonActionPerformed(evt);
-            }
-        });
-
-        ulozitZmenyButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        ulozitZmenyButton.setText("Uložiť zmeny");
-        ulozitZmenyButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ulozitZmenyButtonActionPerformed(evt);
-            }
-        });
+        jButton2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jButton2.setText("Uložiť zmeny");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -79,67 +64,50 @@ public class NastaveniaForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nastaveniaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(nazovObchodnejSieteTextField)
-                    .addComponent(menaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(nazovObchodnejSieteLabel)
-                        .addGap(0, 174, Short.MAX_VALUE))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(menaTextField)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(spatButton, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(ulozitZmenyButton, javax.swing.GroupLayout.Alignment.TRAILING))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
+                        .addComponent(jButton1)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(nastaveniaLabel)
+                .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(nazovObchodnejSieteLabel)
+                .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nazovObchodnejSieteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(menaLabel)
+                .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(menaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ulozitZmenyButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addComponent(spatButton)
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void spatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spatButtonActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         new HlavneOknoForm().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_spatButtonActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void nazovObchodnejSieteTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nazovObchodnejSieteTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nazovObchodnejSieteTextFieldActionPerformed
-
-    private void menaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menaTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_menaTextFieldActionPerformed
-
-    private void ulozitZmenyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ulozitZmenyButtonActionPerformed
-        // TODO add your handling code here:
-        Nastavenia nastavenia = new Nastavenia();
-        nastavenia.setNazovObchodnejSiete(nazovObchodnejSieteTextField.getText());
-        nastavenia.setMena(menaTextField.getText());
-
-        DaoFactory.INSTANCE.getNastaveniaDao().pridajUpravNastavenia(nastavenia);
-
-        dispose();
-    }//GEN-LAST:event_ulozitZmenyButtonActionPerformed
-
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -173,12 +141,12 @@ public class NastaveniaForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel menaLabel;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField menaTextField;
-    private javax.swing.JLabel nastaveniaLabel;
-    private javax.swing.JLabel nazovObchodnejSieteLabel;
     private javax.swing.JTextField nazovObchodnejSieteTextField;
-    private javax.swing.JButton spatButton;
-    private javax.swing.JButton ulozitZmenyButton;
     // End of variables declaration//GEN-END:variables
 }
