@@ -20,6 +20,10 @@ public class NastaveniaForm extends javax.swing.JFrame {
     public NastaveniaForm() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
+        Nastavenia nastavenia= DaoFactory.INSTANCE.getNastaveniaDao().nacitajNastavenia(1);
+        nazovObchodnejSieteTextField.setText(nastavenia.getNazovObchodnejSiete());
+        menaTextField.setText(nastavenia.getMena());
     }
 
     /**
@@ -51,6 +55,11 @@ public class NastaveniaForm extends javax.swing.JFrame {
 
         nazovObchodnejSieteTextField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         nazovObchodnejSieteTextField.setToolTipText("Názov obchodnej siete");
+        nazovObchodnejSieteTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nazovObchodnejSieteTextFieldActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel3.setText("Mena:");
@@ -132,6 +141,10 @@ public class NastaveniaForm extends javax.swing.JFrame {
 
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void nazovObchodnejSieteTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nazovObchodnejSieteTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nazovObchodnejSieteTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
