@@ -1,30 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sk.upjs.ics.paz1c.obchodnaSiet.dao.impl;
 
+import java.util.List;
 import sk.upjs.ics.paz1c.obchodnaSiet.dao.DaoFactory;
-import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.PrevadzkaDao;
-import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.ProduktDao;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.PrevadzkaDao;
+import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.ProduktDao;
+import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.ProduktNaPredajniDao;
+import sk.upjs.ics.paz1c.obchodnaSiet.entity.Prevadzka;
+import sk.upjs.ics.paz1c.obchodnaSiet.entity.Produkt;
+import sk.upjs.ics.paz1c.obchodnaSiet.entity.ProduktNaPredajni;
 
-/**
- *
- * @author Administrator
- */
 public class ProduktNaPredajniDaoImplTest {
 
-    private ProduktDao produktDao;
-    private PrevadzkaDao prevadzkaDao;
+    private final ProduktNaPredajniDao produktNaPredajniDao;
 
     public ProduktNaPredajniDaoImplTest() {
+        produktNaPredajniDao = DaoFactory.INSTANCE.getProduktNaPredajniDao();
     }
 
     @BeforeClass
@@ -37,8 +33,6 @@ public class ProduktNaPredajniDaoImplTest {
 
     @Before
     public void setUp() {
-        produktDao = DaoFactory.INSTANCE.getProduktDao();
-        prevadzkaDao = DaoFactory.INSTANCE.getPrevadzkaDao();
     }
 
     @After
@@ -51,8 +45,27 @@ public class ProduktNaPredajniDaoImplTest {
      */
     @Test
     public void testPridajProduktNaPredajnu() {
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        int pocetPred = produktNaPredajniDao.nacitajVsetkyProduktyNaPredajniach().size();
+
+        ProduktDao produktDao = DaoFactory.INSTANCE.getProduktDao();
+        produktDao.pridajProdukt(new Produkt("TEST", 0, 0));
+        List<Produkt> produkty = produktDao.nacitajVsetkyProdukty();
+        Integer idProduktu = produkty.get(produkty.size() - 1).getId();
+
+        PrevadzkaDao prevadzkaDao = DaoFactory.INSTANCE.getPrevadzkaDao();
+        prevadzkaDao.pridajPrevadzku(new Prevadzka("TEST", "TEST", "TEST"));
+        List<Prevadzka> prevadzky = prevadzkaDao.nacitajVsetkyPrevadzky();
+        Integer idPrevadzky = prevadzky.get(prevadzky.size() - 1).getId();
+
+        produktNaPredajniDao.pridajProduktNaPredajnu(new ProduktNaPredajni(idProduktu, idPrevadzky, 0, 0));
+
+        int pocetPo = produktNaPredajniDao.nacitajVsetkyProduktyNaPredajniach().size();
+
+        produktNaPredajniDao.odoberProduktZPredajne(idProduktu, idPrevadzky);
+        produktDao.odoberProdukt(idProduktu);
+        prevadzkaDao.odoberPrevadzku(idPrevadzky);
+
+        assertEquals(pocetPred + 1, pocetPo);
     }
 
     /**
@@ -61,8 +74,28 @@ public class ProduktNaPredajniDaoImplTest {
      */
     @Test
     public void testNacitajProduktNaPredajni() {
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        ProduktDao produktDao = DaoFactory.INSTANCE.getProduktDao();
+        produktDao.pridajProdukt(new Produkt("TEST", 0, 0));
+        List<Produkt> produkty = produktDao.nacitajVsetkyProdukty();
+        Integer idProduktu = produkty.get(produkty.size() - 1).getId();
+
+        PrevadzkaDao prevadzkaDao = DaoFactory.INSTANCE.getPrevadzkaDao();
+        prevadzkaDao.pridajPrevadzku(new Prevadzka("TEST", "TEST", "TEST"));
+        List<Prevadzka> prevadzky = prevadzkaDao.nacitajVsetkyPrevadzky();
+        Integer idPrevadzky = prevadzky.get(prevadzky.size() - 1).getId();
+
+        produktNaPredajniDao.pridajProduktNaPredajnu(new ProduktNaPredajni(idProduktu, idPrevadzky, 0, 0));
+
+        List<ProduktNaPredajni> produktyNaPredajni = produktNaPredajniDao.nacitajVsetkyProduktyNaPredajniach();
+        ProduktNaPredajni pnp = produktNaPredajniDao.nacitajProduktNaPredajni(idProduktu, idPrevadzky);
+        double zlava = pnp.getZlava();
+        int kusy = pnp.getKusy();
+
+        produktNaPredajniDao.odoberProduktZPredajne(idProduktu, idPrevadzky);
+        produktDao.odoberProdukt(idProduktu);
+        prevadzkaDao.odoberPrevadzku(idPrevadzky);
+
+        assertTrue(pnp != null && 0.0 == zlava && 0 == kusy);
     }
 
     /**
@@ -71,26 +104,46 @@ public class ProduktNaPredajniDaoImplTest {
      */
     @Test
     public void testNacitajVsetkyProduktyNaPredajniach() {
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        List<ProduktNaPredajni> produktyNaPredajni = produktNaPredajniDao.nacitajVsetkyProduktyNaPredajniach();
+        assertTrue(produktyNaPredajni != null);
     }
 
-    /**
-     * Test of upravProduktNaPredajni method, of class ProduktNaPredajniDaoImpl.
-     */
-    @Test
-    public void testUpravProduktNaPredajni() {
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
+    // TODO
+//    /**
+//     * Test of upravProduktNaPredajni method, of class ProduktNaPredajniDaoImpl.
+//     */
+//    @Test
+//    public void testUpravProduktNaPredajni() {
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
     /**
      * Test of odoberProduktZPredajne method, of class ProduktNaPredajniDaoImpl.
      */
     @Test
     public void testOdoberProduktZPredajne() {
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        ProduktDao produktDao = DaoFactory.INSTANCE.getProduktDao();
+        produktDao.pridajProdukt(new Produkt("TEST", 0, 0));
+        List<Produkt> produkty = produktDao.nacitajVsetkyProdukty();
+        Integer idProduktu = produkty.get(produkty.size() - 1).getId();
+
+        PrevadzkaDao prevadzkaDao = DaoFactory.INSTANCE.getPrevadzkaDao();
+        prevadzkaDao.pridajPrevadzku(new Prevadzka("TEST", "TEST", "TEST"));
+        List<Prevadzka> prevadzky = prevadzkaDao.nacitajVsetkyPrevadzky();
+        Integer idPrevadzky = prevadzky.get(prevadzky.size() - 1).getId();
+
+        produktNaPredajniDao.pridajProduktNaPredajnu(new ProduktNaPredajni(idProduktu, idPrevadzky, 0, 0));
+
+        int pocetPred = produktNaPredajniDao.nacitajVsetkyProduktyNaPredajniach().size();
+
+        produktNaPredajniDao.odoberProduktZPredajne(idProduktu, idPrevadzky);
+
+        int pocetPo = produktNaPredajniDao.nacitajVsetkyProduktyNaPredajniach().size();
+
+        produktDao.odoberProdukt(idProduktu);
+        prevadzkaDao.odoberPrevadzku(idPrevadzky);
+
+        assertEquals(pocetPred - 1, pocetPo);
     }
 
 }

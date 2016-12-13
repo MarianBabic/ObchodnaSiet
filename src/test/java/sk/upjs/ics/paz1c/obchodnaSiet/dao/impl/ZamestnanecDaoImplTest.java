@@ -1,5 +1,6 @@
 package sk.upjs.ics.paz1c.obchodnaSiet.dao.impl;
 
+import java.sql.Date;
 import sk.upjs.ics.paz1c.obchodnaSiet.dao.DaoFactory;
 import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.PrevadzkaDao;
 import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.ZamestnanecDao;
@@ -15,9 +16,10 @@ import static org.junit.Assert.*;
 
 public class ZamestnanecDaoImplTest {
 
-    private ZamestnanecDao zamestnanecDao;
+    private final ZamestnanecDao zamestnanecDao;
 
     public ZamestnanecDaoImplTest() {
+        zamestnanecDao = DaoFactory.INSTANCE.getZamestnanecDao();
     }
 
     @BeforeClass
@@ -30,7 +32,6 @@ public class ZamestnanecDaoImplTest {
 
     @Before
     public void setUp() {
-        zamestnanecDao = DaoFactory.INSTANCE.getZamestnanecDao();
     }
 
     @After
@@ -42,14 +43,22 @@ public class ZamestnanecDaoImplTest {
      */
     @Test
     public void testPridajZamestnanaca() {
-        PrevadzkaDao prevadzkaDao = DaoFactory.INSTANCE.getPrevadzkaDao();
         int pocetPred = zamestnanecDao.nacitajVsetkychZamestnancov().size();
-        Prevadzka novaPrevadzka = new Prevadzka("TEST", "TEST", "TEST");
-        prevadzkaDao.pridajPrevadzku(novaPrevadzka);
+
+        PrevadzkaDao prevadzkaDao = DaoFactory.INSTANCE.getPrevadzkaDao();
+        prevadzkaDao.pridajPrevadzku(new Prevadzka("TEST", "TEST", "TEST"));
         List<Prevadzka> prevadzky = prevadzkaDao.nacitajVsetkyPrevadzky();
-        int idPrevadzky = prevadzky.get(prevadzky.size() - 1).getId();
-        zamestnanecDao.pridajZamestnanaca(new Zamestnanec("TEST", "TEST", DaoFactory.INSTANCE.getPrevadzkaDao().nacitajPrevadzku(idPrevadzky), 0.0, 0.0, 0.0));
+        Integer idPrevadzky = prevadzky.get(prevadzky.size() - 1).getId();
+
+        zamestnanecDao.pridajZamestnanaca(new Zamestnanec("TEST", "TEST", idPrevadzky, new Date(System.currentTimeMillis()), 0.0));
+
         int pocetPo = zamestnanecDao.nacitajVsetkychZamestnancov().size();
+
+        List<Zamestnanec> zamestnanci = zamestnanecDao.nacitajVsetkychZamestnancov();
+        Integer idZamestnanec = zamestnanci.get(zamestnanci.size() - 1).getId();
+        zamestnanecDao.odoberZamestnanca(idZamestnanec);
+        prevadzkaDao.odoberPrevadzku(idPrevadzky);
+
         assertEquals(pocetPred + 1, pocetPo);
     }
 
@@ -58,11 +67,21 @@ public class ZamestnanecDaoImplTest {
      */
     @Test
     public void testNacitajZamestnanca() {
-        Zamestnanec zamestnanec = null;
-        if (!zamestnanecDao.nacitajVsetkychZamestnancov().isEmpty()) {
-            zamestnanec = zamestnanecDao.nacitajZamestnanca(zamestnanecDao.nacitajVsetkychZamestnancov().get(0).getId());
-        }
-        assertTrue(zamestnanec != null);
+        PrevadzkaDao prevadzkaDao = DaoFactory.INSTANCE.getPrevadzkaDao();
+        prevadzkaDao.pridajPrevadzku(new Prevadzka("TEST", "TEST", "TEST"));
+        List<Prevadzka> prevadzky = prevadzkaDao.nacitajVsetkyPrevadzky();
+        Integer idPrevadzky = prevadzky.get(prevadzky.size() - 1).getId();
+
+        zamestnanecDao.pridajZamestnanaca(new Zamestnanec("TEST", "TEST", idPrevadzky, new Date(System.currentTimeMillis()), 0.0));
+        List<Zamestnanec> zamestnanci = zamestnanecDao.nacitajVsetkychZamestnancov();
+        Integer idZamestnanec = zamestnanci.get(zamestnanci.size() - 1).getId();
+
+        Zamestnanec z = zamestnanecDao.nacitajZamestnanca(idZamestnanec);
+
+        zamestnanecDao.odoberZamestnanca(idZamestnanec);
+        prevadzkaDao.odoberPrevadzku(idPrevadzky);
+
+        assertTrue(z != null && z.getMeno().equals("TEST") && z.getPriezvisko().equals("TEST") && z.getPrevadzkaId().equals(idPrevadzky) && z.getPlatBrutto() == 0.0);
     }
 
     /**
@@ -74,41 +93,37 @@ public class ZamestnanecDaoImplTest {
         assertTrue(zamestnanci != null);
     }
 
-    /**
-     * Test of upravZamestnanca method, of class ZamestnanecDaoImpl.
-     */
-    @Test
-    public void testUpravZamestnanca() {
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
+    // TODO
+//    /**
+//     * Test of upravZamestnanca method, of class ZamestnanecDaoImpl.
+//     */
+//    @Test
+//    public void testUpravZamestnanca() {
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
     /**
      * Test of odoberZamestnanca method, of class ZamestnanecDaoImpl.
      */
     @Test
     public void testOdoberZamestnanca() {
-        Zamestnanec zamestnanec = new Zamestnanec();
-        List<Zamestnanec> zamestnanci = zamestnanecDao.nacitajVsetkychZamestnancov();
-        for (Zamestnanec z : zamestnanci) {
-            if (z.getMeno().equals("TEST")) {
-                zamestnanec = z;
-            }
-        }
-        int pocetPred = zamestnanci.size();
-        zamestnanecDao.odoberZamestnanca(zamestnanec.getId());
-        int pocetPo = zamestnanecDao.nacitajVsetkychZamestnancov().size();
-        assertTrue(pocetPred - 1 == pocetPo);
-    }
+        PrevadzkaDao prevadzkaDao = DaoFactory.INSTANCE.getPrevadzkaDao();
+        prevadzkaDao.pridajPrevadzku(new Prevadzka("TEST", "TEST", "TEST"));
+        List<Prevadzka> prevadzky = prevadzkaDao.nacitajVsetkyPrevadzky();
+        Integer idPrevadzky = prevadzky.get(prevadzky.size() - 1).getId();
 
-    /**
-     * Test of vycisliZisk method, of class ZamestnanecDaoImpl.
-     */
-    @Test
-    public void testVycisliZisk() {
-        double zisk = Double.MIN_VALUE;
-        zisk = zamestnanecDao.nacitajZamestnanca(zamestnanecDao.nacitajVsetkychZamestnancov().get(0).getId()).getZiskZPredaja();
-        assertTrue(zisk != Double.MIN_VALUE);
+        zamestnanecDao.pridajZamestnanaca(new Zamestnanec("TEST", "TEST", idPrevadzky, new Date(System.currentTimeMillis()), 0.0));
+
+        List<Zamestnanec> zamestnanci = zamestnanecDao.nacitajVsetkychZamestnancov();
+        Integer idZamestnanec = zamestnanci.get(zamestnanci.size() - 1).getId();
+        int pocetPred = zamestnanci.size();
+
+        zamestnanecDao.odoberZamestnanca(idZamestnanec);
+        int pocetPo = zamestnanecDao.nacitajVsetkychZamestnancov().size();
+
+        prevadzkaDao.odoberPrevadzku(idPrevadzky);
+
+        assertEquals(pocetPred - 1, pocetPo);
     }
 
 }

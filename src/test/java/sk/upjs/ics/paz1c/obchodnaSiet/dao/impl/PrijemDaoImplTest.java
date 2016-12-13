@@ -16,9 +16,10 @@ import static org.junit.Assert.*;
 
 public class PrijemDaoImplTest {
 
-    private PrijemDao prijemDao;
+    private final PrijemDao prijemDao;
 
     public PrijemDaoImplTest() {
+        prijemDao = DaoFactory.INSTANCE.getPrijemDao();
     }
 
     @BeforeClass
@@ -31,7 +32,6 @@ public class PrijemDaoImplTest {
 
     @Before
     public void setUp() {
-        prijemDao = DaoFactory.INSTANCE.getPrijemDao();
     }
 
     @After
@@ -43,14 +43,22 @@ public class PrijemDaoImplTest {
      */
     @Test
     public void testPridajPrijem() {
-        PrevadzkaDao prevadzkaDao = DaoFactory.INSTANCE.getPrevadzkaDao();
         int pocetPred = prijemDao.nacitajVsetkyPrijmy().size();
-        Prevadzka novaPrevadzka = new Prevadzka("TEST", "TEST", "TEST");
-        prevadzkaDao.pridajPrevadzku(novaPrevadzka);
+
+        PrevadzkaDao prevadzkaDao = DaoFactory.INSTANCE.getPrevadzkaDao();
+        prevadzkaDao.pridajPrevadzku(new Prevadzka("TEST", "TEST", "TEST"));
         List<Prevadzka> prevadzky = prevadzkaDao.nacitajVsetkyPrevadzky();
         int idPrevadzky = prevadzky.get(prevadzky.size() - 1).getId();
-        prijemDao.pridajPrijem(new Prijem(DaoFactory.INSTANCE.getPrevadzkaDao().nacitajPrevadzku(idPrevadzky), "TEST", new Date(System.currentTimeMillis()), 0.0));
+
+        prijemDao.pridajPrijem(new Prijem(idPrevadzky, "TEST", new Date(System.currentTimeMillis()), 0.0));
+
         int pocetPo = prijemDao.nacitajVsetkyPrijmy().size();
+
+        List<Prijem> prijmy = prijemDao.nacitajVsetkyPrijmy();
+        Integer idPrijem = prijmy.get(prijmy.size() - 1).getId();
+        prijemDao.odoberPrijem(idPrijem);
+        prevadzkaDao.odoberPrevadzku(idPrevadzky);
+
         assertEquals(pocetPred + 1, pocetPo);
     }
 
@@ -59,11 +67,22 @@ public class PrijemDaoImplTest {
      */
     @Test
     public void testNacitajPrijem() {
-        Prijem prijem = null;
-        if (!prijemDao.nacitajVsetkyPrijmy().isEmpty()) {
-            prijem = prijemDao.nacitajPrijem(prijemDao.nacitajVsetkyPrijmy().get(0).getId());
-        }
-        assertTrue(prijem != null);
+        PrevadzkaDao prevadzkaDao = DaoFactory.INSTANCE.getPrevadzkaDao();
+        prevadzkaDao.pridajPrevadzku(new Prevadzka("TEST", "TEST", "TEST"));
+        List<Prevadzka> prevadzky = prevadzkaDao.nacitajVsetkyPrevadzky();
+        int idPrevadzky = prevadzky.get(prevadzky.size() - 1).getId();
+
+        prijemDao.pridajPrijem(new Prijem(idPrevadzky, "TEST", new Date(System.currentTimeMillis()), 0.0));
+
+        List<Prijem> prijmy = prijemDao.nacitajVsetkyPrijmy();
+        Integer idPrijem = prijmy.get(prijmy.size() - 1).getId();
+
+        Prijem prijem = prijemDao.nacitajPrijem(idPrijem);
+
+        prijemDao.odoberPrijem(idPrijem);
+        prevadzkaDao.odoberPrevadzku(idPrevadzky);
+
+        assertTrue(prijem != null && prijem.getPrevadzkaId() == idPrevadzky && prijem.getPopis().equals("TEST") && prijem.getSuma() == 0.0);
     }
 
     /**
@@ -75,30 +94,36 @@ public class PrijemDaoImplTest {
         assertTrue(prijmy != null);
     }
 
-    /**
-     * Test of upravPrijem method, of class PrijemDaoImpl.
-     */
-    @Test
-    public void testUpravPrijem() {
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
+    // TODO
+//    /**
+//     * Test of upravPrijem method, of class PrijemDaoImpl.
+//     */
+//    @Test
+//    public void testUpravPrijem() {
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
     /**
      * Test of odoberPrijem method, of class PrijemDaoImpl.
      */
     @Test
     public void testOdoberPrijem() {
-        Prijem prijem = new Prijem();
+        PrevadzkaDao prevadzkaDao = DaoFactory.INSTANCE.getPrevadzkaDao();
+        prevadzkaDao.pridajPrevadzku(new Prevadzka("TEST", "TEST", "TEST"));
+        List<Prevadzka> prevadzky = prevadzkaDao.nacitajVsetkyPrevadzky();
+        int idPrevadzky = prevadzky.get(prevadzky.size() - 1).getId();
+
+        prijemDao.pridajPrijem(new Prijem(idPrevadzky, "TEST", new Date(System.currentTimeMillis()), 0.0));
+
         List<Prijem> prijmy = prijemDao.nacitajVsetkyPrijmy();
-        for (Prijem n : prijmy) {
-            if (n.getPopis().equals("TEST")) {
-                prijem = n;
-            }
-        }
+        int id = prijmy.get(prijmy.size() - 1).getId();
         int pocetPred = prijmy.size();
-        prijemDao.odoberPrijem(prijem.getId());
+
+        prijemDao.odoberPrijem(id);
         int pocetPo = prijemDao.nacitajVsetkyPrijmy().size();
+
+        prevadzkaDao.odoberPrevadzku(idPrevadzky);
+
         assertTrue(pocetPred - 1 == pocetPo);
     }
 
