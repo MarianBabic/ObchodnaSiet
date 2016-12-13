@@ -13,28 +13,27 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.omg.CORBA.Current;
 
 public class NakladDaoImplTest {
-    
-    private NakladDao nakladDao;
-    
+
+    private final NakladDao nakladDao;
+
     public NakladDaoImplTest() {
+        nakladDao = DaoFactory.INSTANCE.getNakladDao();
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
-        nakladDao = DaoFactory.INSTANCE.getNakladDao();
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -44,14 +43,22 @@ public class NakladDaoImplTest {
      */
     @Test
     public void testPridajNaklad() {
-        PrevadzkaDao prevadzkaDao = DaoFactory.INSTANCE.getPrevadzkaDao();
         int pocetPred = nakladDao.nacitajVsetkyNaklady().size();
-        Prevadzka novaPrevadzka = new Prevadzka("TEST", "TEST", "TEST");
-        prevadzkaDao.pridajPrevadzku(novaPrevadzka);
+
+        PrevadzkaDao prevadzkaDao = DaoFactory.INSTANCE.getPrevadzkaDao();
+        prevadzkaDao.pridajPrevadzku(new Prevadzka("TEST", "TEST", "TEST"));
         List<Prevadzka> prevadzky = prevadzkaDao.nacitajVsetkyPrevadzky();
-        int idPrevadzky = prevadzky.get(prevadzky.size() - 1).getId();
-        nakladDao.pridajNaklad(new Naklad(DaoFactory.INSTANCE.getPrevadzkaDao().nacitajPrevadzku(idPrevadzky), "TEST", new Date(System.currentTimeMillis()), 0.0));
+        Integer idPrevadzky = prevadzky.get(prevadzky.size() - 1).getId();
+
+        nakladDao.pridajNaklad(new Naklad(idPrevadzky, "TEST", new Date(System.currentTimeMillis()), 0.0));
+
         int pocetPo = nakladDao.nacitajVsetkyNaklady().size();
+
+        List<Naklad> naklady = nakladDao.nacitajVsetkyNaklady();
+        Integer idNaklad = naklady.get(naklady.size() - 1).getId();
+        nakladDao.odoberNaklad(idNaklad);
+        prevadzkaDao.odoberPrevadzku(idPrevadzky);
+
         assertEquals(pocetPred + 1, pocetPo);
     }
 
@@ -60,11 +67,22 @@ public class NakladDaoImplTest {
      */
     @Test
     public void testNacitajNaklad() {
-        Naklad naklad = null;
-        if (!nakladDao.nacitajVsetkyNaklady().isEmpty()) {
-            naklad = nakladDao.nacitajNaklad(nakladDao.nacitajVsetkyNaklady().get(0).getId());
-        }
-        assertTrue(naklad != null);
+        PrevadzkaDao prevadzkaDao = DaoFactory.INSTANCE.getPrevadzkaDao();
+        prevadzkaDao.pridajPrevadzku(new Prevadzka("TEST", "TEST", "TEST"));
+        List<Prevadzka> prevadzky = prevadzkaDao.nacitajVsetkyPrevadzky();
+        int idPrevadzky = prevadzky.get(prevadzky.size() - 1).getId();
+
+        nakladDao.pridajNaklad(new Naklad(idPrevadzky, "TEST", new Date(System.currentTimeMillis()), 0.0));
+
+        List<Naklad> naklady = nakladDao.nacitajVsetkyNaklady();
+        Integer idNaklad = naklady.get(naklady.size() - 1).getId();
+
+        Naklad naklad = nakladDao.nacitajNaklad(idNaklad);
+
+        nakladDao.odoberNaklad(idNaklad);
+        prevadzkaDao.odoberPrevadzku(idPrevadzky);
+
+        assertTrue(naklad != null && naklad.getPrevadzkaId() == idPrevadzky && naklad.getPopis().equals("TEST") && naklad.getSuma() == 0.0);
     }
 
     /**
@@ -76,31 +94,37 @@ public class NakladDaoImplTest {
         assertTrue(naklady != null);
     }
 
-    /**
-     * Test of upravNaklad method, of class NakladDaoImpl.
-     */
-    @Test
-    public void testUpravNaklad() {
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
+    // TODO
+//    /**
+//     * Test of upravNaklad method, of class NakladDaoImpl.
+//     */
+//    @Test
+//    public void testUpravNaklad() {
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
     /**
      * Test of odoberNaklad method, of class NakladDaoImpl.
      */
     @Test
     public void testOdoberNaklad() {
-        Naklad naklad = new Naklad();
+        PrevadzkaDao prevadzkaDao = DaoFactory.INSTANCE.getPrevadzkaDao();
+        prevadzkaDao.pridajPrevadzku(new Prevadzka("TEST", "TEST", "TEST"));
+        List<Prevadzka> prevadzky = prevadzkaDao.nacitajVsetkyPrevadzky();
+        Integer idPrevadzky = prevadzky.get(prevadzky.size() - 1).getId();
+
+        nakladDao.pridajNaklad(new Naklad(idPrevadzky, "TEST", new Date(System.currentTimeMillis()), 0));
+
         List<Naklad> naklady = nakladDao.nacitajVsetkyNaklady();
-        for (Naklad n : naklady) {
-            if (n.getPopis().equals("TEST")) {
-                naklad = n;
-            }
-        }
+        Integer idNaklad = naklady.get(naklady.size() - 1).getId();
         int pocetPred = naklady.size();
-        nakladDao.odoberNaklad(naklad.getId());
+
+        nakladDao.odoberNaklad(idNaklad);
         int pocetPo = nakladDao.nacitajVsetkyNaklady().size();
+
+        prevadzkaDao.odoberPrevadzku(idPrevadzky);
+
         assertTrue(pocetPred - 1 == pocetPo);
     }
-    
+
 }

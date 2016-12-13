@@ -36,11 +36,10 @@ public class PrevadzkaDaoImpl implements PrevadzkaDao {
         return jdbcTemplate.query(sql, rowMapper);
     }
 
+    // TODO
     @Override
     public void upravPrevadzku(Integer id) {
-        Prevadzka p = nacitajPrevadzku(id);
-        String sql = "UPDATE prevadzka SET nazov=?,adresa=?,otvaracie_hodiny=? WHERE id=" + id;
-        jdbcTemplate.update(sql, p.getNazov(), p.getAdresa(), p.getOtvaracieHodiny());
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
