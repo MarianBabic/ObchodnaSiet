@@ -13,6 +13,7 @@ import sk.upjs.ics.paz1c.obchodnaSiet.entity.Nastavenia;
 import sk.upjs.ics.paz1c.obchodnaSiet.entity.Prevadzka;
 import sk.upjs.ics.paz1c.obchodnaSiet.entity.ProduktNaPredajni;
 import sk.upjs.ics.paz1c.obchodnaSiet.entity.Zamestnanec;
+import sk.upjs.ics.paz1c.obchodnaSiet.forms.HlavneOknoForm;
 
 public class Main {
 
@@ -38,7 +39,12 @@ public class Main {
 // TODO
 //zDao.upravZamestnanca(61);
 
-        
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new HlavneOknoForm().setVisible(true);
+            }
+        });
+
     }
 
 }
