@@ -139,7 +139,8 @@ public class NastaveniaForm extends javax.swing.JFrame {
 
         DaoFactory.INSTANCE.getNastaveniaDao().pridajUpravNastavenia(nastavenia);
 
-        dispose();
+        new HlavneOknoForm().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void nazovObchodnejSieteTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nazovObchodnejSieteTextFieldActionPerformed
