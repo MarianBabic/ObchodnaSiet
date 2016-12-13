@@ -13,23 +13,18 @@ public class NastaveniaDaoImpl implements NastaveniaDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    // defaultne nastavenia su v db, daju sa len updatovat
     @Override
-    public void pridajNastavenia(Nastavenia nastavenia) {
-        String sql = "INSERT INTO nastavenia (id, nazov_obchodnej_siete, mena) VALUES (nastavenia_sequence.nextval,?,?)";
+    public void pridajUpravNastavenia(Nastavenia nastavenia) {
+        String sql = "UPDATE nastavenia SET nazov_obchodnej_siete=?, mena=? WHERE id=1";
         jdbcTemplate.update(sql, nastavenia.getNazovObchodnejSiete(), nastavenia.getMena());
     }
 
     @Override
-    public Nastavenia nacitajNastavenia(int id) {
-        String sql = "SELECT * FROM nastavenia n WHERE n.id=" + id;
+    public Nastavenia nacitajNastavenia(Integer id) {
+        String sql = "SELECT * FROM nastavenia n WHERE n.id=1";
         BeanPropertyRowMapper<Nastavenia> rowMapper = new BeanPropertyRowMapper<>(Nastavenia.class);
         return jdbcTemplate.queryForObject(sql, rowMapper);
-    }
-
-    // TODO
-    @Override
-    public void upravNastavenia(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
