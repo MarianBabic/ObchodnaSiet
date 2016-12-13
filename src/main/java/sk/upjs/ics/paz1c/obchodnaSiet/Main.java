@@ -1,0 +1,46 @@
+package sk.upjs.ics.paz1c.obchodnaSiet;
+
+
+import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.NakladDao;
+import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.PrijemDao;
+import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.ZamestnanecDao;
+import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.ProduktDao;
+import sk.upjs.ics.paz1c.obchodnaSiet.entity.Prijem;
+import sk.upjs.ics.paz1c.obchodnaSiet.entity.Produkt;
+import sk.upjs.ics.paz1c.obchodnaSiet.entity.Naklad;
+import sk.upjs.ics.paz1c.obchodnaSiet.entity.Zamestnanec;
+import sk.upjs.ics.paz1c.obchodnaSiet.dao.DaoFactory;
+import sk.upjs.ics.paz1c.obchodnaSiet.dao.impl.PrevadzkaDaoImpl;
+import java.sql.Date;
+import java.util.Calendar;
+import java.util.List;
+
+public class Main {
+
+    // TODO - toto este musim otestovat aj v unit testoch
+    public static void otestovat() {
+        Produkt produkt = new Produkt("chlieb", 0.5, 0.8);
+        ProduktDao produktDao = DaoFactory.INSTANCE.getProduktDao();
+//        produktDao.upravProdukt(0);
+
+        Naklad naklad = new Naklad(DaoFactory.INSTANCE.getPrevadzkaDao().nacitajPrevadzku(33), "nejaky naklad", new Date(System.currentTimeMillis()), 5);
+        NakladDao nakladDao = DaoFactory.INSTANCE.getNakladDao();
+//        nakladDao.upravNaklad(0);
+
+        Prijem prijem = new Prijem(DaoFactory.INSTANCE.getPrevadzkaDao().nacitajPrevadzku(33), "prijem", new Date(System.currentTimeMillis()), 100);
+        PrijemDao prijemDao = DaoFactory.INSTANCE.getPrijemDao();
+//        prijemDao.upravPrijem(0);
+
+        Zamestnanec zamestnanec = new Zamestnanec("Adam", "Blazon", DaoFactory.INSTANCE.getPrevadzkaDao().nacitajVsetkyPrevadzky().get(0), 172, 1500, 500);
+        ZamestnanecDao zamestnanecDao = DaoFactory.INSTANCE.getZamestnanecDao();
+//        zamestnanecDao.upravZamestnanca(0);
+    }
+
+    public static void main(String[] args) {
+
+        otestovat();
+
+//TODO        produkt na predajni
+    }
+
+}
