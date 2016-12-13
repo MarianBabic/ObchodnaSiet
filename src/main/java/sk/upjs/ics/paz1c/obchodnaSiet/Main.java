@@ -3,11 +3,13 @@ package sk.upjs.ics.paz1c.obchodnaSiet;
 import java.sql.Date;
 import sk.upjs.ics.paz1c.obchodnaSiet.dao.DaoFactory;
 import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.NakladDao;
+import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.NastaveniaDao;
 import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.PrevadzkaDao;
 import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.PrijemDao;
 import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.ProduktDao;
 import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.ProduktNaPredajniDao;
 import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.ZamestnanecDao;
+import sk.upjs.ics.paz1c.obchodnaSiet.entity.Nastavenia;
 import sk.upjs.ics.paz1c.obchodnaSiet.entity.Prevadzka;
 import sk.upjs.ics.paz1c.obchodnaSiet.entity.ProduktNaPredajni;
 import sk.upjs.ics.paz1c.obchodnaSiet.entity.Zamestnanec;
@@ -36,6 +38,7 @@ public class Main {
 // TODO
 //zDao.upravZamestnanca(61);
 
+        
     }
 
 }

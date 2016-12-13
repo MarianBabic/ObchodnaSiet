@@ -7,6 +7,13 @@ CREATE TABLE naklad (
 );
 CREATE SEQUENCE naklad_sequence START WITH 1 INCREMENT BY 1;
 
+CREATE TABLE nastavenia (
+    id NUMBER PRIMARY KEY,
+    nazov_obchodnej_siete VARCHAR(100),
+    mena VARCHAR(5)
+);
+CREATE SEQUENCE nastavenia_sequence START WITH 1 INCREMENT BY 1;
+
 CREATE TABLE prevadzka (
     id NUMBER PRIMARY KEY,
     nazov VARCHAR(50),
