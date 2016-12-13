@@ -4,10 +4,8 @@ import sk.upjs.ics.paz1c.obchodnaSiet.entity.Nastavenia;
 
 public interface NastaveniaDao {
 
-    void pridajNastavenia(Nastavenia nastavenia);
+    void pridajUpravNastavenia(Nastavenia nastavenia);
 
-    Nastavenia nacitajNastavenia(int id);
-
-    void upravNastavenia(int id);
+    Nastavenia nacitajNastavenia(Integer id);
 
 }

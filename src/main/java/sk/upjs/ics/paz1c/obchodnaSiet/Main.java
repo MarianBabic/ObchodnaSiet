@@ -21,13 +21,14 @@ public class Main {
 
         PrevadzkaDao pd = DaoFactory.INSTANCE.getPrevadzkaDao();
         NakladDao nDao = DaoFactory.INSTANCE.getNakladDao();
+        NastaveniaDao ndao = DaoFactory.INSTANCE.getNastaveniaDao();
         PrijemDao pDao = DaoFactory.INSTANCE.getPrijemDao();
         ProduktDao proDao = DaoFactory.INSTANCE.getProduktDao();
         ProduktNaPredajniDao pnpDao = DaoFactory.INSTANCE.getProduktNaPredajniDao();
         ZamestnanecDao zDao = DaoFactory.INSTANCE.getZamestnanecDao();
 
         // TODO
-        pd.upravPrevadzku(141);
+//        pd.upravPrevadzku(141);
         // TODO
 //        nDao.upravNaklad(81);
         // TODO
@@ -38,6 +39,8 @@ public class Main {
 //pnpDao.upravProduktNaPredajni(101, 141);
 // TODO
 //zDao.upravZamestnanca(61);
+
+ndao.pridajUpravNastavenia(new Nastavenia("test1", "test2"));
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

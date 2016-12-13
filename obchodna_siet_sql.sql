@@ -10,7 +10,7 @@ CREATE SEQUENCE naklad_sequence START WITH 1 INCREMENT BY 1;
 CREATE TABLE nastavenia (
     id NUMBER PRIMARY KEY,
     nazov_obchodnej_siete VARCHAR(100),
-    mena VARCHAR(5)
+    mena VARCHAR(20)
 );
 CREATE SEQUENCE nastavenia_sequence START WITH 1 INCREMENT BY 1;
 
@@ -20,7 +20,6 @@ CREATE TABLE prevadzka (
     adresa VARCHAR(50),
     otvaracie_hodiny VARCHAR(100)
 );
-CREATE SEQUENCE prevadzka_sequence START WITH 1 INCREMENT BY 1;
 
 CREATE TABLE prijem (
     id NUMBER PRIMARY KEY,
@@ -62,3 +61,5 @@ ALTER TABLE prijem ADD CONSTRAINT f_prijem_prevadzka FOREIGN KEY(prevadzka_id) R
 ALTER TABLE produkt_na_predajni ADD CONSTRAINT f_produkt_na_predajni_produkt FOREIGN KEY(produkt_id) REFERENCES produkt(id) ON DELETE CASCADE;
 ALTER TABLE produkt_na_predajni ADD CONSTRAINT f_prod_na_pred_prevadzka FOREIGN KEY(prevadzka_id) REFERENCES prevadzka(id) ON DELETE CASCADE;
 ALTER TABLE zamestnanec ADD CONSTRAINT f_zamestnanec_prevadzka FOREIGN KEY(prevadzka_id) REFERENCES prevadzka(id) ON DELETE CASCADE;
+
+INSERT INTO nastavenia (id, nazov_obchodnej_siete, mena) VALUES (1, 'Názov obchodnej siete', 'Eur/€');

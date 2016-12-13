@@ -2,7 +2,7 @@ package sk.upjs.ics.paz1c.obchodnaSiet.entity;
 
 public class Nastavenia {
 
-    private int id;
+    private Integer id;
     private String nazovObchodnejSiete;
     private String mena;
 
@@ -15,11 +15,11 @@ public class Nastavenia {
         this.mena = mena;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
