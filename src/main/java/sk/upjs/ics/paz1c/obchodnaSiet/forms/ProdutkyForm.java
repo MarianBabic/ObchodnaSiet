@@ -1,5 +1,6 @@
 package sk.upjs.ics.paz1c.obchodnaSiet.forms;
 
+import sk.upjs.ics.paz1c.obchodnaSiet.entity.Prevadzka;
 import sk.upjs.ics.paz1c.obchodnaSiet.entity.Produkt;
 
 public class ProdutkyForm extends javax.swing.JFrame {
@@ -42,7 +43,7 @@ public class ProdutkyForm extends javax.swing.JFrame {
         jLabel2.setText("Prevádzka:");
 
         prevadzkyComboBox.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        prevadzkyComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        prevadzkyComboBox.setModel(new sk.upjs.ics.paz1c.obchodnaSiet.model.PrevadzkyComboBoxModel());
 
         moznostiZobrazeniaButtonGroup.add(vsetkyProduktyRadioButton);
         vsetkyProduktyRadioButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -236,7 +237,7 @@ public class ProdutkyForm extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.ButtonGroup moznostiZobrazeniaButtonGroup;
     private javax.swing.JButton odobratProduktButton;
-    private javax.swing.JComboBox<String> prevadzkyComboBox;
+    private javax.swing.JComboBox<Prevadzka> prevadzkyComboBox;
     private javax.swing.JButton pridatProduktButton;
     private javax.swing.JButton pridatProduktNaPredajnuButton;
     private javax.swing.JList<Produkt> produktyList;
