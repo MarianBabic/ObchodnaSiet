@@ -1,19 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sk.upjs.ics.paz1c.obchodnaSiet.forms;
 
-/**
- *
- * @author Student
- */
+import java.sql.Date;
+import sk.upjs.ics.paz1c.obchodnaSiet.dao.DaoFactory;
+import sk.upjs.ics.paz1c.obchodnaSiet.entity.Zamestnanec;
+
 public class PridatZamestnancaForm extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PridatZamestnancaForm
-     */
     public PridatZamestnancaForm() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -67,6 +59,11 @@ public class PridatZamestnancaForm extends javax.swing.JFrame {
 
         pridatButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         pridatButton.setText("Pridať");
+        pridatButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pridatButtonActionPerformed(evt);
+            }
+        });
 
         spatButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         spatButton.setText("Späť");
@@ -145,9 +142,25 @@ public class PridatZamestnancaForm extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_spatButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void pridatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pridatButtonActionPerformed
+        // TODO add your handling code here:
+        String meno = menoTextField.getText();
+        String priezvisko = priezviskoTextField.getText();
+        Date datumNastupu = Date.valueOf(datumNastupuTextField.getText());
+        double plat = Double.parseDouble(mzdaTextField.getText());
+        Zamestnanec zamestnanec = new Zamestnanec();
+        zamestnanec.setMeno(meno);
+        zamestnanec.setPriezvisko(priezvisko);
+        zamestnanec.setPrevadzkaId(null);
+        zamestnanec.setDatumNastupu(datumNastupu);
+        zamestnanec.setPlatBrutto(plat);
+
+        DaoFactory.INSTANCE.getZamestnanecDao().pridajZamestnanaca(zamestnanec);
+
+        new ZamestnanciForm().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_pridatButtonActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
