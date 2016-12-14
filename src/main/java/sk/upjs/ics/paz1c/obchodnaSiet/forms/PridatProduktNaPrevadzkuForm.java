@@ -174,6 +174,7 @@ public class PridatProduktNaPrevadzkuForm extends javax.swing.JFrame {
         produktNaPredajni.setZlava(Double.parseDouble(zlavaTextField.getText()));
         ProduktNaPredajniDao dao = DaoFactory.INSTANCE.getProduktNaPredajniDao();
         dao.pridajProduktNaPredajnu(produktNaPredajni);
+        new ProdutkyForm().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_pridatButtonActionPerformed
 
