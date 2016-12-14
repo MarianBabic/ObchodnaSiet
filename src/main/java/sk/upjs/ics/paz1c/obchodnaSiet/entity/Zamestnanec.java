@@ -72,7 +72,7 @@ public class Zamestnanec {
 
     @Override
     public String toString() {
-        return "Zamestnanec{" + "id=" + id + ", meno=" + meno + ", priezvisko=" + priezvisko + ", prevadzkaId=" + prevadzkaId + ", datumNastupu=" + datumNastupu + ", platBrutto=" + platBrutto + '}';
+        return meno + " " + priezvisko + " (id: " + id + ", id prevádzky: " + prevadzkaId + ", dátum nástupu: " + datumNastupu + ", plat brutto: " + platBrutto + ")";
     }
 
 }

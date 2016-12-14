@@ -51,7 +51,7 @@ public class ProduktNaPredajni {
 
     @Override
     public String toString() {
-        return "ProduktNaPredajni{" + "produktId=" + produktId + ", prevadzkaId=" + prevadzkaId + ", zlava=" + zlava + ", kusy=" + kusy + '}';
+        return "id produktu: " + produktId + ", id predajne: " + prevadzkaId + ", zľava: " + zlava + "počet kusov: " + kusy;
     }
 
 }
