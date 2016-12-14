@@ -1,17 +1,10 @@
 package sk.upjs.ics.paz1c.obchodnaSiet.forms;
 
 import sk.upjs.ics.paz1c.obchodnaSiet.entity.Produkt;
-import sk.upjs.ics.paz1c.obchodnaSiet.model.ProduktComboBoxModel;
-import sk.upjs.ics.paz1c.obchodnaSiet.model.ProduktListModel;
 
 public class ProdutkyForm extends javax.swing.JFrame {
-    
-    private ProduktComboBoxModel produktComboBoxModel;
-    private ProduktListModel produktListModel;
 
     public ProdutkyForm() {
-        produktComboBoxModel = new ProduktComboBoxModel();
-        produktListModel = new ProduktListModel();
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -74,6 +67,11 @@ public class ProdutkyForm extends javax.swing.JFrame {
 
         produktyList.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         produktyList.setModel(new sk.upjs.ics.paz1c.obchodnaSiet.model.ProduktListModel());
+        produktyList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                oznacitRiadok(evt);
+            }
+        });
         jScrollPane1.setViewportView(produktyList);
 
         jButton1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -185,12 +183,17 @@ public class ProdutkyForm extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         new OdobratProduktDialogForm(this, true).setVisible(true);
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         new PridatProduktNaPrevadzkuForm().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void oznacitRiadok(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_oznacitRiadok
+        // TODO add your handling code here:
+    }//GEN-LAST:event_oznacitRiadok
 
     /**
      * @param args the command line arguments

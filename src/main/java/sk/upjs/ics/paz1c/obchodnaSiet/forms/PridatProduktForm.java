@@ -1,14 +1,11 @@
 package sk.upjs.ics.paz1c.obchodnaSiet.forms;
 
+import sk.upjs.ics.paz1c.obchodnaSiet.dao.DaoFactory;
 import sk.upjs.ics.paz1c.obchodnaSiet.entity.Produkt;
-import sk.upjs.ics.paz1c.obchodnaSiet.model.ProduktComboBoxModel;
 
 public class PridatProduktForm extends javax.swing.JFrame {
 
-    private ProduktComboBoxModel produktComboBoxModel;
-
     public PridatProduktForm() {
-        produktComboBoxModel = new ProduktComboBoxModel();
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -145,7 +142,7 @@ public class PridatProduktForm extends javax.swing.JFrame {
         produkt.setNazov(nazov);
         produkt.setNakupnaCena(nakupnaCena);
         produkt.setPredajnaCena(predajnaCena);
-        produktComboBoxModel.pridajProdukt(produkt);
+        DaoFactory.INSTANCE.getProduktDao().pridajProdukt(produkt);
 
         new ProdutkyForm().setVisible(true);
         this.dispose();
