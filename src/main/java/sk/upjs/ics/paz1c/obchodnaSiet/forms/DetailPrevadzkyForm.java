@@ -5,6 +5,10 @@
  */
 package sk.upjs.ics.paz1c.obchodnaSiet.forms;
 
+import sk.upjs.ics.paz1c.obchodnaSiet.dao.DaoFactory;
+import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.PrevadzkaDao;
+import sk.upjs.ics.paz1c.obchodnaSiet.entity.Prevadzka;
+
 /**
  *
  * @author Student
@@ -14,6 +18,10 @@ public class DetailPrevadzkyForm extends javax.swing.JFrame {
     /**
      * Creates new form DetailPrevadzkyForm
      */
+    
+    PrevadzkaDao dao = DaoFactory.INSTANCE.getPrevadzkaDao();
+    Prevadzka prevadzka;
+    
     public DetailPrevadzkyForm() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -21,6 +29,10 @@ public class DetailPrevadzkyForm extends javax.swing.JFrame {
     public DetailPrevadzkyForm(int index) {
         initComponents();
         this.setLocationRelativeTo(null);
+        
+        prevadzka = dao.nacitajPrevadzku(index);
+        nazovPrevadzkyLabel.setText(prevadzka.getNazov());
+        
     }
 
     /**
