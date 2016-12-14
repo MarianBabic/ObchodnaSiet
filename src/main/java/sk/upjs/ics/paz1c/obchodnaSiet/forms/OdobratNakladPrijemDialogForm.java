@@ -5,6 +5,12 @@
  */
 package sk.upjs.ics.paz1c.obchodnaSiet.forms;
 
+import sk.upjs.ics.paz1c.obchodnaSiet.dao.DaoFactory;
+import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.NakladDao;
+import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.PrijemDao;
+import sk.upjs.ics.paz1c.obchodnaSiet.entity.Naklad;
+import sk.upjs.ics.paz1c.obchodnaSiet.entity.Prijem;
+
 /**
  *
  * @author Student
@@ -14,10 +20,37 @@ public class OdobratNakladPrijemDialogForm extends javax.swing.JDialog {
     /**
      * Creates new form OdobratNakladPrijemDialogForm
      */
+    
+    public static int mode;
+    public static int id;
+    public static NakladDao daoN;
+    public static PrijemDao daoP;
+    
+    
     public OdobratNakladPrijemDialogForm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
+    }
+    
+    public OdobratNakladPrijemDialogForm(java.awt.Frame parent, boolean modal, int mode, int id) {
+        super(parent, modal);
+        initComponents();
+        this.setLocationRelativeTo(null);
+        this.mode = mode;
+        this.id = id;
+        if (mode == 0){
+            daoN = DaoFactory.INSTANCE.getNakladDao();
+            Naklad naklad = daoN.nacitajNaklad(id);
+            popisLabel.setText(naklad.getPopis());
+            sumaLabel.setText(String.valueOf(naklad.getSuma()));
+        }
+        if (mode == 1){
+            daoP = DaoFactory.INSTANCE.getPrijemDao();
+            Prijem prijem = daoP.nacitajPrijem(id);
+            popisLabel.setText(prijem.getPopis());
+            sumaLabel.setText(String.valueOf(prijem.getSuma()));
+        }
     }
 
     /**
@@ -59,6 +92,11 @@ public class OdobratNakladPrijemDialogForm extends javax.swing.JDialog {
         odobratButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         odobratButton.setForeground(new java.awt.Color(255, 0, 0));
         odobratButton.setText("Odobrať");
+        odobratButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                odobratButtonActionPerformed(evt);
+            }
+        });
 
         spatButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         spatButton.setText("Späť");
@@ -116,6 +154,16 @@ public class OdobratNakladPrijemDialogForm extends javax.swing.JDialog {
     private void spatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spatButtonActionPerformed
         this.dispose();
     }//GEN-LAST:event_spatButtonActionPerformed
+
+    private void odobratButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_odobratButtonActionPerformed
+        if (mode == 0){
+            daoN.odoberNaklad(id);
+        }
+        if (mode == 1){
+            daoP.odoberPrijem(id);
+        }
+        this.dispose();
+    }//GEN-LAST:event_odobratButtonActionPerformed
 
     /**
      * @param args the command line arguments

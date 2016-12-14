@@ -8,8 +8,8 @@ import sk.upjs.ics.paz1c.obchodnaSiet.entity.Prijem;
 
 public class PrijemListModel extends AbstractListModel<Prijem> {
 
-    private final PrijemDao prijemDao;
-    private final List<Prijem> prijmy;
+    private PrijemDao prijemDao;
+    private List<Prijem> prijmy;
 
     public PrijemListModel() {
         prijemDao = DaoFactory.INSTANCE.getPrijemDao();
@@ -26,4 +26,9 @@ public class PrijemListModel extends AbstractListModel<Prijem> {
         return prijmy.get(index);
     }
 
+    public void refresh(){
+        prijmy = prijemDao.nacitajVsetkyPrijmy();
+        fireContentsChanged(this, 0, getSize());
+    }
+    
 }

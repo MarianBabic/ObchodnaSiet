@@ -5,6 +5,13 @@
  */
 package sk.upjs.ics.paz1c.obchodnaSiet.forms;
 
+import java.sql.Date;
+import sk.upjs.ics.paz1c.obchodnaSiet.dao.DaoFactory;
+import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.NakladDao;
+import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.PrijemDao;
+import sk.upjs.ics.paz1c.obchodnaSiet.entity.Naklad;
+import sk.upjs.ics.paz1c.obchodnaSiet.entity.Prijem;
+
 /**
  *
  * @author Student
@@ -14,10 +21,28 @@ public class PridatNakladPrijemDialogForm extends javax.swing.JDialog {
     /**
      * Creates new form PridatNakladPrijemDialogForm
      */
+    public static int mode;
+    public static int id;
+    
     public PridatNakladPrijemDialogForm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
+    }
+
+    PridatNakladPrijemDialogForm(java.awt.Frame parent, boolean modal, int i, int id) {
+        super(parent, modal);
+        initComponents();
+        
+        this.setLocationRelativeTo(null);
+        mode = i;
+        this.id = id;
+        if (i == 0){
+            nadpisLabel.setText("Náklad");
+        }
+        if (i == 1){
+            nadpisLabel.setText("Príjem");
+        }
     }
 
     /**
@@ -55,7 +80,7 @@ public class PridatNakladPrijemDialogForm extends javax.swing.JDialog {
         jLabel2.setText("Dátum:");
 
         datumTextField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        datumTextField.setToolTipText("Dátum vo formáte dd.mm.rrrr");
+        datumTextField.setToolTipText("Dátum vo formáte rrrr-mm-dd");
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel3.setText("Suma:");
@@ -64,6 +89,11 @@ public class PridatNakladPrijemDialogForm extends javax.swing.JDialog {
 
         pridatButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         pridatButton.setText("Pridať");
+        pridatButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pridatButtonActionPerformed(evt);
+            }
+        });
 
         spatButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         spatButton.setText("Späť");
@@ -127,6 +157,28 @@ public class PridatNakladPrijemDialogForm extends javax.swing.JDialog {
     private void spatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spatButtonActionPerformed
         this.dispose();
     }//GEN-LAST:event_spatButtonActionPerformed
+
+    private void pridatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pridatButtonActionPerformed
+        if (mode == 0){
+            Naklad naklad = new Naklad();
+            naklad.setPopis(popisTextField.getText());
+            naklad.setDatum(Date.valueOf(datumTextField.getText()));
+            naklad.setSuma(Double.parseDouble(sumaTextField.getText()));
+            naklad.setPrevadzkaId(id);
+            NakladDao dao = DaoFactory.INSTANCE.getNakladDao();
+            dao.pridajNaklad(naklad);
+        }
+        if (mode == 1){
+            Prijem prijem = new Prijem();
+            prijem.setPopis(popisTextField.getText());
+            prijem.setDatum(Date.valueOf(datumTextField.getText()));
+            prijem.setSuma(Double.parseDouble(sumaTextField.getText()));
+            prijem.setPrevadzkaId(id);
+            PrijemDao dao = DaoFactory.INSTANCE.getPrijemDao();
+            dao.pridajPrijem(prijem);
+        }
+        this.dispose();
+    }//GEN-LAST:event_pridatButtonActionPerformed
 
     /**
      * @param args the command line arguments
