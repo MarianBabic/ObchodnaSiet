@@ -5,6 +5,9 @@
  */
 package sk.upjs.ics.paz1c.obchodnaSiet.forms;
 
+import sk.upjs.ics.paz1c.obchodnaSiet.entity.Prevadzka;
+import sk.upjs.ics.paz1c.obchodnaSiet.entity.Produkt;
+
 /**
  *
  * @author Student
@@ -51,13 +54,13 @@ public class PridatProduktNaPrevadzkuForm extends javax.swing.JFrame {
         jLabel2.setText("Názov produktu:");
 
         nazovProduktuComboBox.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        nazovProduktuComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        nazovProduktuComboBox.setModel(new sk.upjs.ics.paz1c.obchodnaSiet.model.ProduktComboBoxModel());
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel3.setText("Názov prevádzky:");
 
         nazovPrevadzkyComboBox.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        nazovPrevadzkyComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        nazovPrevadzkyComboBox.setModel(new sk.upjs.ics.paz1c.obchodnaSiet.model.PrevadzkyComboBoxModel());
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel4.setText("Počet kusov:");
@@ -184,8 +187,8 @@ public class PridatProduktNaPrevadzkuForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JComboBox<String> nazovPrevadzkyComboBox;
-    private javax.swing.JComboBox<String> nazovProduktuComboBox;
+    private javax.swing.JComboBox<Prevadzka> nazovPrevadzkyComboBox;
+    private javax.swing.JComboBox<Produkt> nazovProduktuComboBox;
     private javax.swing.JTextField pocetKusovTextField;
     private javax.swing.JButton pridatButton;
     private javax.swing.JButton spatButton;
