@@ -8,8 +8,8 @@ import sk.upjs.ics.paz1c.obchodnaSiet.entity.Naklad;
 
 public class NakladListModel extends AbstractListModel<Naklad> {
 
-    private final NakladDao nakladDao;
-    private final List<Naklad> naklady;
+    private NakladDao nakladDao;
+    private List<Naklad> naklady;
 
     public NakladListModel() {
         nakladDao = DaoFactory.INSTANCE.getNakladDao();
@@ -24,6 +24,11 @@ public class NakladListModel extends AbstractListModel<Naklad> {
     @Override
     public Naklad getElementAt(int index) {
         return naklady.get(index);
+    }
+    
+    public void refresh(){
+        naklady = nakladDao.nacitajVsetkyNaklady();
+        fireContentsChanged(this, 0, getSize());
     }
 
 }

@@ -7,7 +7,11 @@ package sk.upjs.ics.paz1c.obchodnaSiet.forms;
 
 import sk.upjs.ics.paz1c.obchodnaSiet.dao.DaoFactory;
 import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.PrevadzkaDao;
+import sk.upjs.ics.paz1c.obchodnaSiet.entity.Naklad;
 import sk.upjs.ics.paz1c.obchodnaSiet.entity.Prevadzka;
+import sk.upjs.ics.paz1c.obchodnaSiet.entity.Prijem;
+import sk.upjs.ics.paz1c.obchodnaSiet.model.NakladListModel;
+import sk.upjs.ics.paz1c.obchodnaSiet.model.PrijemListModel;
 
 /**
  *
@@ -72,18 +76,10 @@ public class DetailPrevadzkyForm extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Príjmy:");
 
-        nakladyList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
+        nakladyList.setModel(new sk.upjs.ics.paz1c.obchodnaSiet.model.NakladListModel());
         jScrollPane1.setViewportView(nakladyList);
 
-        prijmyList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
+        prijmyList.setModel(new sk.upjs.ics.paz1c.obchodnaSiet.model.PrijemListModel());
         jScrollPane2.setViewportView(prijmyList);
 
         pridatNakladButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -142,15 +138,15 @@ public class DetailPrevadzkyForm extends javax.swing.JFrame {
                                 .addComponent(odobratNakladButton))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 2, Short.MAX_VALUE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(pridatPrijemButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(odobratPrijemButton))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -190,19 +186,31 @@ public class DetailPrevadzkyForm extends javax.swing.JFrame {
     }//GEN-LAST:event_spatButtonActionPerformed
 
     private void pridatNakladButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pridatNakladButtonActionPerformed
-        new PridatNakladPrijemDialogForm(this, true).setVisible(true);
+        new PridatNakladPrijemDialogForm(this, true, 0, prevadzka.getId()).setVisible(true);
+        NakladListModel model = (NakladListModel) nakladyList.getModel();
+        model.refresh();
     }//GEN-LAST:event_pridatNakladButtonActionPerformed
 
     private void pridatPrijemButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pridatPrijemButtonActionPerformed
-        new PridatNakladPrijemDialogForm(this, true).setVisible(true);
+        new PridatNakladPrijemDialogForm(this, true, 1, prevadzka.getId()).setVisible(true);
+        PrijemListModel model = (PrijemListModel) prijmyList.getModel();
+        model.refresh();
     }//GEN-LAST:event_pridatPrijemButtonActionPerformed
 
     private void odobratNakladButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_odobratNakladButtonActionPerformed
-        new OdobratNakladPrijemDialogForm(this, true).setVisible(true);
+        Naklad naklad = new Naklad();
+        naklad = nakladyList.getSelectedValue();
+        new OdobratNakladPrijemDialogForm(this, true, 0, naklad.getId()).setVisible(true);
+        NakladListModel model = (NakladListModel) nakladyList.getModel();
+        model.refresh();
     }//GEN-LAST:event_odobratNakladButtonActionPerformed
 
     private void odobratPrijemButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_odobratPrijemButtonActionPerformed
-        new OdobratNakladPrijemDialogForm(this, true).setVisible(true);
+        Prijem prijem = new Prijem();
+        prijem = prijmyList.getSelectedValue();
+        new OdobratNakladPrijemDialogForm(this, true, 1, prijem.getId()).setVisible(true);
+        PrijemListModel model = (PrijemListModel) prijmyList.getModel();
+        model.refresh();
     }//GEN-LAST:event_odobratPrijemButtonActionPerformed
 
     /**
@@ -245,13 +253,13 @@ public class DetailPrevadzkyForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JList<String> nakladyList;
+    private javax.swing.JList<Naklad> nakladyList;
     private javax.swing.JLabel nazovPrevadzkyLabel;
     private javax.swing.JButton odobratNakladButton;
     private javax.swing.JButton odobratPrijemButton;
     private javax.swing.JButton pridatNakladButton;
     private javax.swing.JButton pridatPrijemButton;
-    private javax.swing.JList<String> prijmyList;
+    private javax.swing.JList<Prijem> prijmyList;
     private javax.swing.JButton spatButton;
     // End of variables declaration//GEN-END:variables
 }
