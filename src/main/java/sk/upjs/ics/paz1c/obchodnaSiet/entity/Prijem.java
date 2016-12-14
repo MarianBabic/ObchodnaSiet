@@ -62,7 +62,7 @@ public class Prijem {
 
     @Override
     public String toString() {
-        return "Prijem{" + "id=" + id + ", prevadzkaId=" + prevadzkaId + ", popis=" + popis + ", datum=" + datum + ", suma=" + suma + '}';
+        return suma + " (id: " + id + ", id prevádzky: " + prevadzkaId + ", dátum: " + datum + ", popis: " + popis + ")";
     }
 
 }
