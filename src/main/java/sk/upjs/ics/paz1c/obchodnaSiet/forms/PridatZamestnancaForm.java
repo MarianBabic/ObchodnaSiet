@@ -74,7 +74,7 @@ public class PridatZamestnancaForm extends javax.swing.JFrame {
         });
 
         datumNastupuTextField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        datumNastupuTextField.setToolTipText("Dátum v tvare dd.mm.rrrr");
+        datumNastupuTextField.setToolTipText("Dátum v tvare rrrr-mm-dd");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
