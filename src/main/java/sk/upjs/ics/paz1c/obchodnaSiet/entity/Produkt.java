@@ -50,7 +50,7 @@ public class Produkt {
 
     @Override
     public String toString() {
-        return nazov + " (id: " + id + ", nákupná cena: " + nakupnaCena + ", predajná cena: " + predajnaCena + ")";
+        return nazov + " (nákupná cena: " + nakupnaCena + ", predajná cena: " + predajnaCena + ")";
     }
 
 }

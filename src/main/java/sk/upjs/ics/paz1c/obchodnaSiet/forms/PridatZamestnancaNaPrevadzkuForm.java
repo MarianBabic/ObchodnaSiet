@@ -5,6 +5,11 @@
  */
 package sk.upjs.ics.paz1c.obchodnaSiet.forms;
 
+import sk.upjs.ics.paz1c.obchodnaSiet.dao.DaoFactory;
+import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.ZamestnanecDao;
+import sk.upjs.ics.paz1c.obchodnaSiet.entity.Prevadzka;
+import sk.upjs.ics.paz1c.obchodnaSiet.entity.Zamestnanec;
+
 /**
  *
  * @author Student
@@ -47,16 +52,26 @@ public class PridatZamestnancaNaPrevadzkuForm extends javax.swing.JFrame {
         jLabel2.setText("Meno zamestnanca:");
 
         menoComboBox.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        menoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        menoComboBox.setModel(new sk.upjs.ics.paz1c.obchodnaSiet.model.ZamestnanecComboBoxModel());
+        menoComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menoComboBoxActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel3.setText("Názov prevádzky:");
 
         prevadzkyComboBox.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        prevadzkyComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        prevadzkyComboBox.setModel(new sk.upjs.ics.paz1c.obchodnaSiet.model.PrevadzkyComboBoxModel());
 
         pridatButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         pridatButton.setText("Pridať");
+        pridatButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pridatButtonActionPerformed(evt);
+            }
+        });
 
         spatButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         spatButton.setText("Späť");
@@ -116,6 +131,24 @@ public class PridatZamestnancaNaPrevadzkuForm extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_spatButtonActionPerformed
 
+    private void menoComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menoComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menoComboBoxActionPerformed
+
+    private void pridatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pridatButtonActionPerformed
+        // TODO add your handling code here:
+        Zamestnanec zamestnanec = (Zamestnanec) menoComboBox.getSelectedItem();
+        Prevadzka prevadzka = (Prevadzka) prevadzkyComboBox.getSelectedItem();
+        Integer idPrevadzky = prevadzka.getId();
+        zamestnanec.setPrevadzkaId(idPrevadzky);
+        ZamestnanecDao dao = DaoFactory.INSTANCE.getZamestnanecDao();
+        // TODO update zamestnanca :)
+        dao.odoberZamestnanca(zamestnanec.getId());
+        dao.pridajZamestnanaca(zamestnanec);
+        new ZamestnanciForm().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_pridatButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -155,8 +188,8 @@ public class PridatZamestnancaNaPrevadzkuForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JComboBox<String> menoComboBox;
-    private javax.swing.JComboBox<String> prevadzkyComboBox;
+    private javax.swing.JComboBox<Zamestnanec> menoComboBox;
+    private javax.swing.JComboBox<Prevadzka> prevadzkyComboBox;
     private javax.swing.JButton pridatButton;
     private javax.swing.JButton spatButton;
     // End of variables declaration//GEN-END:variables

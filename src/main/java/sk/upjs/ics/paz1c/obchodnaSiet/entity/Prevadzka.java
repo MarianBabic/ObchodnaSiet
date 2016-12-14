@@ -50,7 +50,7 @@ public class Prevadzka {
 
     @Override
     public String toString() {
-        return nazov + " (id: " + id + ", adresa: " + adresa + ", otváracie hodiny: " + otvaracieHodiny + ")";
+        return nazov + " (adresa: " + adresa + ", otváracie hodiny: " + otvaracieHodiny + ")";
     }
 
 }
