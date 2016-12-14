@@ -62,7 +62,7 @@ public class Naklad {
 
     @Override
     public String toString() {
-        return suma + " (id: " + id + ", id prevádzky: " + prevadzkaId + ", popis: " + popis + ", dátum: " + datum + ")";
+        return suma + " (id prevádzky: " + prevadzkaId + ", popis: " + popis + ", dátum: " + datum + ")";
     }
 
 }

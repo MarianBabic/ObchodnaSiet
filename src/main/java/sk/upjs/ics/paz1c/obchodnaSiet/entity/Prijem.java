@@ -62,7 +62,7 @@ public class Prijem {
 
     @Override
     public String toString() {
-        return suma + " (id: " + id + ", id prevádzky: " + prevadzkaId + ", dátum: " + datum + ", popis: " + popis + ")";
+        return suma + " (id prevádzky: " + prevadzkaId + ", dátum: " + datum + ", popis: " + popis + ")";
     }
 
 }
