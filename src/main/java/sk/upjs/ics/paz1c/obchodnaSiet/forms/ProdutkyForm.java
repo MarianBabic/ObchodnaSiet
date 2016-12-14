@@ -1,20 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sk.upjs.ics.paz1c.obchodnaSiet.forms;
 
-/**
- *
- * @author Student
- */
-public class ProdutkyForm extends javax.swing.JFrame {
+import sk.upjs.ics.paz1c.obchodnaSiet.model.ProduktComboBoxModel;
 
-    /**
-     * Creates new form ProdutkyForm
-     */
+public class ProdutkyForm extends javax.swing.JFrame {
+    
+    private ProduktComboBoxModel produktComboBoxModel;
+
     public ProdutkyForm() {
+        produktComboBoxModel = new ProduktComboBoxModel();
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -76,11 +69,7 @@ public class ProdutkyForm extends javax.swing.JFrame {
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         produktyList.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        produktyList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
+        produktyList.setModel(produktComboBoxModel);
         jScrollPane1.setViewportView(produktyList);
 
         jButton1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N

@@ -1,20 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sk.upjs.ics.paz1c.obchodnaSiet.forms;
 
-/**
- *
- * @author Student
- */
+import sk.upjs.ics.paz1c.obchodnaSiet.entity.Produkt;
+import sk.upjs.ics.paz1c.obchodnaSiet.model.ProduktComboBoxModel;
+
 public class PridatProduktForm extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PridatProduktForm
-     */
+    private ProduktComboBoxModel produktComboBoxModel;
+
     public PridatProduktForm() {
+        produktComboBoxModel = new ProduktComboBoxModel();
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -54,6 +48,11 @@ public class PridatProduktForm extends javax.swing.JFrame {
         jLabel3.setText("Nákupná cena:");
 
         nakupnaCenaTextField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        nakupnaCenaTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nakupnaCenaTextFieldActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel4.setText("Predajná cena:");
@@ -62,6 +61,11 @@ public class PridatProduktForm extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jButton1.setText("Pridať produkt");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jButton2.setText("Späť");
@@ -127,9 +131,26 @@ public class PridatProduktForm extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void nakupnaCenaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nakupnaCenaTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nakupnaCenaTextFieldActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+
+        String nazov = nazovProduktuTextField.getText();
+        double nakupnaCena = Double.parseDouble(nakupnaCenaTextField.getText());
+        double predajnaCena = Double.parseDouble(predajnaCenaTextField.getText());
+        Produkt produkt = new Produkt();
+        produkt.setNazov(nazov);
+        produkt.setNakupnaCena(nakupnaCena);
+        produkt.setPredajnaCena(predajnaCena);
+        produktComboBoxModel.pridajProdukt(produkt);
+
+        new ProdutkyForm().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
