@@ -58,12 +58,22 @@ public class PridatProduktNaPrevadzkuForm extends javax.swing.JFrame {
 
         nazovProduktuComboBox.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         nazovProduktuComboBox.setModel(new sk.upjs.ics.paz1c.obchodnaSiet.model.ProduktComboBoxModel());
+        nazovProduktuComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nazovProduktuComboBoxActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel3.setText("Názov prevádzky:");
 
         nazovPrevadzkyComboBox.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         nazovPrevadzkyComboBox.setModel(new sk.upjs.ics.paz1c.obchodnaSiet.model.PrevadzkyComboBoxModel());
+        nazovPrevadzkyComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nazovPrevadzkyComboBoxActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel4.setText("Počet kusov:");
@@ -166,6 +176,14 @@ public class PridatProduktNaPrevadzkuForm extends javax.swing.JFrame {
         dao.pridajProduktNaPredajnu(produktNaPredajni);
         this.dispose();
     }//GEN-LAST:event_pridatButtonActionPerformed
+
+    private void nazovProduktuComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nazovProduktuComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nazovProduktuComboBoxActionPerformed
+
+    private void nazovPrevadzkyComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nazovPrevadzkyComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nazovPrevadzkyComboBoxActionPerformed
 
     /**
      * @param args the command line arguments
