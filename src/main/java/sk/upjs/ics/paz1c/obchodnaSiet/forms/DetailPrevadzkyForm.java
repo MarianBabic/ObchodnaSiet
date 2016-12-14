@@ -18,6 +18,10 @@ public class DetailPrevadzkyForm extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
     }
+    public DetailPrevadzkyForm(int index) {
+        initComponents();
+        this.setLocationRelativeTo(null);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,7 +43,7 @@ public class DetailPrevadzkyForm extends javax.swing.JFrame {
         odobratNakladButton = new javax.swing.JButton();
         pridatPrijemButton = new javax.swing.JButton();
         odobratPrijemButton = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        spatButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -102,11 +106,11 @@ public class DetailPrevadzkyForm extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jButton5.setText("Späť");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        spatButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        spatButton.setText("Späť");
+        spatButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                spatButtonActionPerformed(evt);
             }
         });
 
@@ -138,7 +142,7 @@ public class DetailPrevadzkyForm extends javax.swing.JFrame {
                                 .addComponent(odobratPrijemButton))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton5)))
+                        .addComponent(spatButton)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -161,17 +165,17 @@ public class DetailPrevadzkyForm extends javax.swing.JFrame {
                     .addComponent(pridatPrijemButton)
                     .addComponent(odobratPrijemButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton5)
+                .addComponent(spatButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void spatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spatButtonActionPerformed
         new PrevadzkyForm().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_spatButtonActionPerformed
 
     private void pridatNakladButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pridatNakladButtonActionPerformed
         new PridatNakladPrijemDialogForm(this, true).setVisible(true);
@@ -225,7 +229,6 @@ public class DetailPrevadzkyForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -237,5 +240,6 @@ public class DetailPrevadzkyForm extends javax.swing.JFrame {
     private javax.swing.JButton pridatNakladButton;
     private javax.swing.JButton pridatPrijemButton;
     private javax.swing.JList<String> prijmyList;
+    private javax.swing.JButton spatButton;
     // End of variables declaration//GEN-END:variables
 }

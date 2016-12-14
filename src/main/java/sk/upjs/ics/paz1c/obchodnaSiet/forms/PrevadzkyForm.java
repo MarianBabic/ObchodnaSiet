@@ -5,6 +5,11 @@
  */
 package sk.upjs.ics.paz1c.obchodnaSiet.forms;
 
+import java.util.List;
+import sk.upjs.ics.paz1c.obchodnaSiet.dao.DaoFactory;
+import sk.upjs.ics.paz1c.obchodnaSiet.entity.Prevadzka;
+import sk.upjs.ics.paz1c.obchodnaSiet.model.PrevadzkyListModel;
+
 /**
  *
  * @author Student
@@ -31,10 +36,10 @@ public class PrevadzkyForm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         prevadzkyList = new javax.swing.JList<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        detailPrevadzkyButton = new javax.swing.JButton();
+        pridatPrevadzkuButton = new javax.swing.JButton();
+        odobratPrevadzkuButton = new javax.swing.JButton();
+        spatButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -43,42 +48,39 @@ public class PrevadzkyForm extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Prevádzky");
 
-        prevadzkyList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
+        prevadzkyList.setModel(new sk.upjs.ics.paz1c.obchodnaSiet.model.PrevadzkyListModel());
+        prevadzkyList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(prevadzkyList);
 
-        jButton1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jButton1.setText("Detail prevádzky");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        detailPrevadzkyButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        detailPrevadzkyButton.setText("Detail prevádzky");
+        detailPrevadzkyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                detailPrevadzkyButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jButton2.setText("Pridať prevádzku");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        pridatPrevadzkuButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        pridatPrevadzkuButton.setText("Pridať prevádzku");
+        pridatPrevadzkuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                pridatPrevadzkuButtonActionPerformed(evt);
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jButton3.setText("Odobrať prevádzku");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        odobratPrevadzkuButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        odobratPrevadzkuButton.setText("Odobrať prevádzku");
+        odobratPrevadzkuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                odobratPrevadzkuButtonActionPerformed(evt);
             }
         });
 
-        jButton4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jButton4.setText("Späť");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        spatButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        spatButton.setText("Späť");
+        spatButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                spatButtonActionPerformed(evt);
             }
         });
 
@@ -93,12 +95,12 @@ public class PrevadzkyForm extends javax.swing.JFrame {
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(pridatPrevadzkuButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(detailPrevadzkyButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addComponent(odobratPrevadzkuButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(spatButton, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -110,36 +112,36 @@ public class PrevadzkyForm extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton3))
+                    .addComponent(detailPrevadzkyButton)
+                    .addComponent(odobratPrevadzkuButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton4))
+                    .addComponent(pridatPrevadzkuButton)
+                    .addComponent(spatButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void spatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spatButtonActionPerformed
         new HlavneOknoForm().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_spatButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new DetailPrevadzkyForm().setVisible(true);
+    private void detailPrevadzkyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detailPrevadzkyButtonActionPerformed
+        new DetailPrevadzkyForm(prevadzkyList.getSelectedIndex()).setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_detailPrevadzkyButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void odobratPrevadzkuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_odobratPrevadzkuButtonActionPerformed
         new OdobratPrevadzkuDialogForm(this, true).setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_odobratPrevadzkuButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void pridatPrevadzkuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pridatPrevadzkuButtonActionPerformed
         new PridatPrevadzkuForm().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_pridatPrevadzkuButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,12 +179,12 @@ public class PrevadzkyForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton detailPrevadzkyButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList<String> prevadzkyList;
+    private javax.swing.JButton odobratPrevadzkuButton;
+    private javax.swing.JList<Prevadzka> prevadzkyList;
+    private javax.swing.JButton pridatPrevadzkuButton;
+    private javax.swing.JButton spatButton;
     // End of variables declaration//GEN-END:variables
 }

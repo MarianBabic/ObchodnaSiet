@@ -40,8 +40,8 @@ public class NastaveniaForm extends javax.swing.JFrame {
         nazovObchodnejSieteTextField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         menaTextField = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        spatButton = new javax.swing.JButton();
+        ulozitZmenyButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -67,19 +67,19 @@ public class NastaveniaForm extends javax.swing.JFrame {
         menaTextField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         menaTextField.setToolTipText("Mena obchodnej siete (max 5 znakov)");
 
-        jButton1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jButton1.setText("Späť");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        spatButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        spatButton.setText("Späť");
+        spatButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                spatButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jButton2.setText("Uložiť zmeny");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        ulozitZmenyButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        ulozitZmenyButton.setText("Uložiť zmeny");
+        ulozitZmenyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                ulozitZmenyButtonActionPerformed(evt);
             }
         });
 
@@ -98,9 +98,9 @@ public class NastaveniaForm extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(ulozitZmenyButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                        .addComponent(spatButton)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -118,20 +118,20 @@ public class NastaveniaForm extends javax.swing.JFrame {
                 .addComponent(menaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(ulozitZmenyButton)
+                    .addComponent(spatButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void spatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spatButtonActionPerformed
         new HlavneOknoForm().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_spatButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void ulozitZmenyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ulozitZmenyButtonActionPerformed
         // TODO add your handling code here:
         Nastavenia nastavenia = new Nastavenia();
         nastavenia.setNazovObchodnejSiete(nazovObchodnejSieteTextField.getText());
@@ -141,7 +141,7 @@ public class NastaveniaForm extends javax.swing.JFrame {
 
         new HlavneOknoForm().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_ulozitZmenyButtonActionPerformed
 
     private void nazovObchodnejSieteTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nazovObchodnejSieteTextFieldActionPerformed
         // TODO add your handling code here:
@@ -183,12 +183,12 @@ public class NastaveniaForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField menaTextField;
     private javax.swing.JTextField nazovObchodnejSieteTextField;
+    private javax.swing.JButton spatButton;
+    private javax.swing.JButton ulozitZmenyButton;
     // End of variables declaration//GEN-END:variables
 }

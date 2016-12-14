@@ -20,6 +20,7 @@ CREATE TABLE prevadzka (
     adresa VARCHAR(50),
     otvaracie_hodiny VARCHAR(100)
 );
+CREATE SEQUENCE prevadzka_sequence START WITH 1 INCREMENT BY 1;
 
 CREATE TABLE prijem (
     id NUMBER PRIMARY KEY,

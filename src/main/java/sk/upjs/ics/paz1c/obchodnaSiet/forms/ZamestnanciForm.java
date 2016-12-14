@@ -32,12 +32,12 @@ public class ZamestnanciForm extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         zamestnanciList = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        pridatZamestnancaNaPrevadzkuButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        pridatZamestnancaButton = new javax.swing.JButton();
         prevadzkyComboBox = new javax.swing.JComboBox<>();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        spatButton = new javax.swing.JButton();
+        odobratZamestnancaButton = new javax.swing.JButton();
         vsetciZamestnanciRadioButton = new javax.swing.JRadioButton();
         zamestnanciNaPrevadzkeRadioButton = new javax.swing.JRadioButton();
 
@@ -58,41 +58,41 @@ public class ZamestnanciForm extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Zamestnanci");
 
-        jButton1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jButton1.setText("Pridať zamestnanca na prevádzku");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        pridatZamestnancaNaPrevadzkuButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        pridatZamestnancaNaPrevadzkuButton.setText("Pridať zamestnanca na prevádzku");
+        pridatZamestnancaNaPrevadzkuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                pridatZamestnancaNaPrevadzkuButtonActionPerformed(evt);
             }
         });
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel2.setText("Prevádzka:");
 
-        jButton2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jButton2.setText("Pridať zamestnanca");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        pridatZamestnancaButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        pridatZamestnancaButton.setText("Pridať zamestnanca");
+        pridatZamestnancaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                pridatZamestnancaButtonActionPerformed(evt);
             }
         });
 
         prevadzkyComboBox.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         prevadzkyComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jButton3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jButton3.setText("Späť");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        spatButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        spatButton.setText("Späť");
+        spatButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                spatButtonActionPerformed(evt);
             }
         });
 
-        jButton4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jButton4.setText("Odobrať zamestnanca");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        odobratZamestnancaButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        odobratZamestnancaButton.setText("Odobrať zamestnanca");
+        odobratZamestnancaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                odobratZamestnancaButtonActionPerformed(evt);
             }
         });
 
@@ -100,7 +100,6 @@ public class ZamestnanciForm extends javax.swing.JFrame {
         vsetciZamestnanciRadioButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         vsetciZamestnanciRadioButton.setSelected(true);
         vsetciZamestnanciRadioButton.setText("Všetci zamestnanci");
-        vsetciZamestnanciRadioButton.setActionCommand("Všetci zamestnanci");
         vsetciZamestnanciRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 vsetciZamestnanciRadioButtonActionPerformed(evt);
@@ -110,7 +109,6 @@ public class ZamestnanciForm extends javax.swing.JFrame {
         moznostiZobrazeniaButtonGroup.add(zamestnanciNaPrevadzkeRadioButton);
         zamestnanciNaPrevadzkeRadioButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         zamestnanciNaPrevadzkeRadioButton.setText("Podľa prevádzky");
-        zamestnanciNaPrevadzkeRadioButton.setActionCommand("Podľa prevádzky");
         zamestnanciNaPrevadzkeRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 zamestnanciNaPrevadzkeRadioButtonActionPerformed(evt);
@@ -135,14 +133,14 @@ public class ZamestnanciForm extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(prevadzkyComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(pridatZamestnancaButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4)
+                        .addComponent(odobratZamestnancaButton)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(pridatZamestnancaNaPrevadzkuButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3)))
+                        .addComponent(spatButton)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -162,36 +160,36 @@ public class ZamestnanciForm extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton4))
+                    .addComponent(pridatZamestnancaButton)
+                    .addComponent(odobratZamestnancaButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton3))
+                    .addComponent(pridatZamestnancaNaPrevadzkuButton)
+                    .addComponent(spatButton))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void pridatZamestnancaNaPrevadzkuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pridatZamestnancaNaPrevadzkuButtonActionPerformed
         new PridatZamestnancaNaPrevadzkuForm().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_pridatZamestnancaNaPrevadzkuButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void pridatZamestnancaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pridatZamestnancaButtonActionPerformed
         new PridatZamestnancaForm().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_pridatZamestnancaButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void spatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spatButtonActionPerformed
         new HlavneOknoForm().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_spatButtonActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void odobratZamestnancaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_odobratZamestnancaButtonActionPerformed
         new OdobratZamestnancaDialogForm(this, true).setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_odobratZamestnancaButtonActionPerformed
 
     private void vsetciZamestnanciRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vsetciZamestnanciRadioButtonActionPerformed
         // TODO add your handling code here:
@@ -237,15 +235,15 @@ public class ZamestnanciForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.ButtonGroup moznostiZobrazeniaButtonGroup;
+    private javax.swing.JButton odobratZamestnancaButton;
     private javax.swing.JComboBox<String> prevadzkyComboBox;
+    private javax.swing.JButton pridatZamestnancaButton;
+    private javax.swing.JButton pridatZamestnancaNaPrevadzkuButton;
+    private javax.swing.JButton spatButton;
     private javax.swing.JRadioButton vsetciZamestnanciRadioButton;
     private javax.swing.JList<String> zamestnanciList;
     private javax.swing.JRadioButton zamestnanciNaPrevadzkeRadioButton;

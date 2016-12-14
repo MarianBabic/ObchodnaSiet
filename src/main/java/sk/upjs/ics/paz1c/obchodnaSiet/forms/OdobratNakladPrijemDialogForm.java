@@ -34,8 +34,8 @@ public class OdobratNakladPrijemDialogForm extends javax.swing.JDialog {
         popisLabel = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         sumaLabel = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        odobratButton = new javax.swing.JButton();
+        spatButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -56,15 +56,15 @@ public class OdobratNakladPrijemDialogForm extends javax.swing.JDialog {
         sumaLabel.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         sumaLabel.setText("suma");
 
-        jButton1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 0, 0));
-        jButton1.setText("Odobrať");
+        odobratButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        odobratButton.setForeground(new java.awt.Color(255, 0, 0));
+        odobratButton.setText("Odobrať");
 
-        jButton2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jButton2.setText("Späť");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        spatButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        spatButton.setText("Späť");
+        spatButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                spatButtonActionPerformed(evt);
             }
         });
 
@@ -85,9 +85,9 @@ public class OdobratNakladPrijemDialogForm extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(sumaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(odobratButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 200, Short.MAX_VALUE)
-                        .addComponent(jButton2)))
+                        .addComponent(spatButton)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -105,17 +105,17 @@ public class OdobratNakladPrijemDialogForm extends javax.swing.JDialog {
                     .addComponent(sumaLabel))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(odobratButton)
+                    .addComponent(spatButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void spatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spatButtonActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_spatButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,12 +160,12 @@ public class OdobratNakladPrijemDialogForm extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton odobratButton;
     private javax.swing.JLabel popisLabel;
+    private javax.swing.JButton spatButton;
     private javax.swing.JLabel sumaLabel;
     // End of variables declaration//GEN-END:variables
 }

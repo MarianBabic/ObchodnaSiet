@@ -26,8 +26,8 @@ public class PridatProduktForm extends javax.swing.JFrame {
         nakupnaCenaTextField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         predajnaCenaTextField = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        pridatButton = new javax.swing.JButton();
+        spatButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -56,19 +56,19 @@ public class PridatProduktForm extends javax.swing.JFrame {
 
         predajnaCenaTextField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
 
-        jButton1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jButton1.setText("Pridať produkt");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        pridatButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        pridatButton.setText("Pridať");
+        pridatButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                pridatButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jButton2.setText("Späť");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        spatButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        spatButton.setText("Späť");
+        spatButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                spatButtonActionPerformed(evt);
             }
         });
 
@@ -91,9 +91,9 @@ public class PridatProduktForm extends javax.swing.JFrame {
                             .addComponent(nakupnaCenaTextField)
                             .addComponent(predajnaCenaTextField)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
-                        .addComponent(jButton2)))
+                        .addComponent(pridatButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 218, Short.MAX_VALUE)
+                        .addComponent(spatButton)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -115,24 +115,24 @@ public class PridatProduktForm extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(pridatButton)
+                    .addComponent(spatButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void spatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spatButtonActionPerformed
         new ProdutkyForm().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_spatButtonActionPerformed
 
     private void nakupnaCenaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nakupnaCenaTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nakupnaCenaTextFieldActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void pridatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pridatButtonActionPerformed
         // TODO add your handling code here:
 
         String nazov = nazovProduktuTextField.getText();
@@ -146,7 +146,7 @@ public class PridatProduktForm extends javax.swing.JFrame {
 
         new ProdutkyForm().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_pridatButtonActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -181,8 +181,6 @@ public class PridatProduktForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -190,5 +188,7 @@ public class PridatProduktForm extends javax.swing.JFrame {
     private javax.swing.JTextField nakupnaCenaTextField;
     private javax.swing.JTextField nazovProduktuTextField;
     private javax.swing.JTextField predajnaCenaTextField;
+    private javax.swing.JButton pridatButton;
+    private javax.swing.JButton spatButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -36,12 +36,12 @@ public class HlavneOknoForm extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         nazovObchodnejSieteLabel = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        prevadzkyButton = new javax.swing.JButton();
+        zamestnanciButton = new javax.swing.JButton();
+        produktButton = new javax.swing.JButton();
+        nastaveniaButton = new javax.swing.JButton();
+        oProgrameButton = new javax.swing.JButton();
+        koniecButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -54,51 +54,51 @@ public class HlavneOknoForm extends javax.swing.JFrame {
         nazovObchodnejSieteLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nazovObchodnejSieteLabel.setText("Názov obchodnej siete");
 
-        jButton1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jButton1.setText("Prevádzky");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        prevadzkyButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        prevadzkyButton.setText("Prevádzky");
+        prevadzkyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                prevadzkyButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jButton2.setText("Zamestnanci");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        zamestnanciButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        zamestnanciButton.setText("Zamestnanci");
+        zamestnanciButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                zamestnanciButtonActionPerformed(evt);
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jButton3.setText("Produkty");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        produktButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        produktButton.setText("Produkty");
+        produktButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                produktButtonActionPerformed(evt);
             }
         });
 
-        jButton4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jButton4.setText("Nastavenia");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        nastaveniaButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        nastaveniaButton.setText("Nastavenia");
+        nastaveniaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                nastaveniaButtonActionPerformed(evt);
             }
         });
 
-        jButton5.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jButton5.setText("O programe");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        oProgrameButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        oProgrameButton.setText("O programe");
+        oProgrameButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                oProgrameButtonActionPerformed(evt);
             }
         });
 
-        jButton6.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jButton6.setText("Koniec");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        koniecButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        koniecButton.setText("Koniec");
+        koniecButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                koniecButtonActionPerformed(evt);
             }
         });
 
@@ -111,14 +111,14 @@ public class HlavneOknoForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(nazovObchodnejSieteLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(prevadzkyButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(zamestnanciButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(produktButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nastaveniaButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton5)
+                        .addComponent(oProgrameButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton6)))
+                        .addComponent(koniecButton)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -129,51 +129,51 @@ public class HlavneOknoForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(nazovObchodnejSieteLabel)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(prevadzkyButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(zamestnanciButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3)
+                .addComponent(produktButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton4)
+                .addComponent(nastaveniaButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6))
+                    .addComponent(oProgrameButton)
+                    .addComponent(koniecButton))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void oProgrameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oProgrameButtonActionPerformed
         new OProgrameForm().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_oProgrameButtonActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void koniecButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_koniecButtonActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_koniecButtonActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void nastaveniaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nastaveniaButtonActionPerformed
         new NastaveniaForm().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_nastaveniaButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void produktButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_produktButtonActionPerformed
         new ProdutkyForm().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_produktButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void zamestnanciButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zamestnanciButtonActionPerformed
         new ZamestnanciForm().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_zamestnanciButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void prevadzkyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevadzkyButtonActionPerformed
         new PrevadzkyForm().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_prevadzkyButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -211,13 +211,13 @@ public class HlavneOknoForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton koniecButton;
+    private javax.swing.JButton nastaveniaButton;
     private javax.swing.JLabel nazovObchodnejSieteLabel;
+    private javax.swing.JButton oProgrameButton;
+    private javax.swing.JButton prevadzkyButton;
+    private javax.swing.JButton produktButton;
+    private javax.swing.JButton zamestnanciButton;
     // End of variables declaration//GEN-END:variables
 }
