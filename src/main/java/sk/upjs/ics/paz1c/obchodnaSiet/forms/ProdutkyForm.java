@@ -1,5 +1,6 @@
 package sk.upjs.ics.paz1c.obchodnaSiet.forms;
 
+import sk.upjs.ics.paz1c.obchodnaSiet.entity.Produkt;
 import sk.upjs.ics.paz1c.obchodnaSiet.model.ProduktComboBoxModel;
 import sk.upjs.ics.paz1c.obchodnaSiet.model.ProduktListModel;
 
@@ -72,7 +73,7 @@ public class ProdutkyForm extends javax.swing.JFrame {
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         produktyList.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        produktyList.setModel(produktListModel);
+        produktyList.setModel(new sk.upjs.ics.paz1c.obchodnaSiet.model.ProduktListModel());
         jScrollPane1.setViewportView(produktyList);
 
         jButton1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
