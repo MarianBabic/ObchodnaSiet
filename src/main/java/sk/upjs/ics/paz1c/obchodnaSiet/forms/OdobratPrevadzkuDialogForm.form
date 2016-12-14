@@ -99,6 +99,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Odobra&#x165;"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="odobratButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="spatButton">
       <Properties>

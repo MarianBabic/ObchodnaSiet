@@ -5,6 +5,11 @@
  */
 package sk.upjs.ics.paz1c.obchodnaSiet.forms;
 
+import org.springframework.dao.support.DaoSupport;
+import sk.upjs.ics.paz1c.obchodnaSiet.dao.DaoFactory;
+import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.ProduktDao;
+import sk.upjs.ics.paz1c.obchodnaSiet.entity.Produkt;
+
 /**
  *
  * @author Student
@@ -14,10 +19,22 @@ public class OdobratProduktDialogForm extends javax.swing.JDialog {
     /**
      * Creates new form OdobratProduktDialogForm
      */
+    
+    ProduktDao dao = DaoFactory.INSTANCE.getProduktDao();
+    Produkt produkt;
+    
     public OdobratProduktDialogForm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
+    }
+    
+    public OdobratProduktDialogForm(java.awt.Frame parent, boolean modal, int id) {
+        super(parent, modal);
+        initComponents();
+        this.setLocationRelativeTo(null);
+        produkt = dao.nacitajProdukt(id);
+        nazovProduktuLabel.setText(produkt.getNazov());
     }
 
     /**
@@ -51,6 +68,11 @@ public class OdobratProduktDialogForm extends javax.swing.JDialog {
         odobratButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         odobratButton.setForeground(new java.awt.Color(255, 0, 0));
         odobratButton.setText("Odobrať");
+        odobratButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                odobratButtonActionPerformed(evt);
+            }
+        });
 
         spatButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         spatButton.setText("Späť");
@@ -100,6 +122,11 @@ public class OdobratProduktDialogForm extends javax.swing.JDialog {
     private void spatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spatButtonActionPerformed
         this.dispose();
     }//GEN-LAST:event_spatButtonActionPerformed
+
+    private void odobratButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_odobratButtonActionPerformed
+        dao.odoberProdukt(produkt.getId());
+        this.dispose();
+    }//GEN-LAST:event_odobratButtonActionPerformed
 
     /**
      * @param args the command line arguments

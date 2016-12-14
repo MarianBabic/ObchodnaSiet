@@ -5,6 +5,10 @@
  */
 package sk.upjs.ics.paz1c.obchodnaSiet.forms;
 
+import sk.upjs.ics.paz1c.obchodnaSiet.dao.DaoFactory;
+import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.PrevadzkaDao;
+import sk.upjs.ics.paz1c.obchodnaSiet.entity.Prevadzka;
+
 /**
  *
  * @author Student
@@ -14,10 +18,20 @@ public class OdobratPrevadzkuDialogForm extends javax.swing.JDialog {
     /**
      * Creates new form OdobratPrevadzkuDialogForm
      */
+    PrevadzkaDao dao = DaoFactory.INSTANCE.getPrevadzkaDao();
+    Prevadzka prevadzka;
+    
     public OdobratPrevadzkuDialogForm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
+    }
+     public OdobratPrevadzkuDialogForm(java.awt.Frame parent, boolean modal, int id) {
+        super(parent, modal);
+        initComponents();
+        this.setLocationRelativeTo(null);
+        prevadzka = dao.nacitajPrevadzku(id);
+        nazovLabel.setText(prevadzka.getNazov());
     }
 
     /**
@@ -51,6 +65,11 @@ public class OdobratPrevadzkuDialogForm extends javax.swing.JDialog {
         odobratButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         odobratButton.setForeground(new java.awt.Color(255, 0, 0));
         odobratButton.setText("Odobrať");
+        odobratButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                odobratButtonActionPerformed(evt);
+            }
+        });
 
         spatButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         spatButton.setText("Späť");
@@ -100,6 +119,11 @@ public class OdobratPrevadzkuDialogForm extends javax.swing.JDialog {
     private void spatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spatButtonActionPerformed
         this.dispose();
     }//GEN-LAST:event_spatButtonActionPerformed
+
+    private void odobratButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_odobratButtonActionPerformed
+        dao.odoberPrevadzku(prevadzka.getId());
+        this.dispose();
+    }//GEN-LAST:event_odobratButtonActionPerformed
 
     /**
      * @param args the command line arguments

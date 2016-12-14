@@ -136,7 +136,10 @@ public class PrevadzkyForm extends javax.swing.JFrame {
     }//GEN-LAST:event_detailPrevadzkyButtonActionPerformed
 
     private void odobratPrevadzkuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_odobratPrevadzkuButtonActionPerformed
-        new OdobratPrevadzkuDialogForm(this, true).setVisible(true);
+        Prevadzka prevadzka = prevadzkyList.getSelectedValue();
+        new OdobratPrevadzkuDialogForm(this, true, prevadzka.getId()).setVisible(true);
+        PrevadzkyListModel model = (PrevadzkyListModel) prevadzkyList.getModel();
+        model.refresh();
     }//GEN-LAST:event_odobratPrevadzkuButtonActionPerformed
 
     private void pridatPrevadzkuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pridatPrevadzkuButtonActionPerformed

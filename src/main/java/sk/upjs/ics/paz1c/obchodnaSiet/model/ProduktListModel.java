@@ -8,8 +8,8 @@ import sk.upjs.ics.paz1c.obchodnaSiet.entity.Produkt;
 
 public class ProduktListModel extends AbstractListModel<Produkt> {
 
-    private final ProduktDao produktDao;
-    private final List<Produkt> produkty;
+    private ProduktDao produktDao;
+    private List<Produkt> produkty;
 
     public ProduktListModel() {
         produktDao = DaoFactory.INSTANCE.getProduktDao();
@@ -26,4 +26,9 @@ public class ProduktListModel extends AbstractListModel<Produkt> {
         return produkty.get(index);
     }
 
+    public void referesh(){
+        produkty = produktDao.nacitajVsetkyProdukty();
+        fireContentsChanged(this, 0, getSize());
+    }
+    
 }

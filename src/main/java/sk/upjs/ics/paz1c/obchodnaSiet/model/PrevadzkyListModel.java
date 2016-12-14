@@ -26,4 +26,9 @@ public class PrevadzkyListModel extends AbstractListModel<Prevadzka>{
         return prevadzky.get(index);
     }
     
+    public void refresh(){
+        prevadzky = dao.nacitajVsetkyPrevadzky();
+        fireContentsChanged(this, 0, getSize());
+    }
+    
 }

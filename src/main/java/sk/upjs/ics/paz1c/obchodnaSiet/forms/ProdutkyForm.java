@@ -2,6 +2,7 @@ package sk.upjs.ics.paz1c.obchodnaSiet.forms;
 
 import sk.upjs.ics.paz1c.obchodnaSiet.entity.Prevadzka;
 import sk.upjs.ics.paz1c.obchodnaSiet.entity.Produkt;
+import sk.upjs.ics.paz1c.obchodnaSiet.model.ProduktListModel;
 
 public class ProdutkyForm extends javax.swing.JFrame {
 
@@ -183,8 +184,10 @@ public class ProdutkyForm extends javax.swing.JFrame {
     }//GEN-LAST:event_pridatProduktButtonActionPerformed
 
     private void odobratProduktButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_odobratProduktButtonActionPerformed
-        new OdobratProduktDialogForm(this, true).setVisible(true);
-        
+        Produkt produkt = produktyList.getSelectedValue();
+        new OdobratProduktDialogForm(this, true, produkt.getId()).setVisible(true);
+        ProduktListModel model = (ProduktListModel) produktyList.getModel();
+        model.referesh();
     }//GEN-LAST:event_odobratProduktButtonActionPerformed
 
     private void pridatProduktNaPredajnuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pridatProduktNaPredajnuButtonActionPerformed
