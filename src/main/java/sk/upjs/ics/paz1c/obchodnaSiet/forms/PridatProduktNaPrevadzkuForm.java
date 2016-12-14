@@ -5,8 +5,11 @@
  */
 package sk.upjs.ics.paz1c.obchodnaSiet.forms;
 
+import sk.upjs.ics.paz1c.obchodnaSiet.dao.DaoFactory;
+import sk.upjs.ics.paz1c.obchodnaSiet.dao.interfaces.ProduktNaPredajniDao;
 import sk.upjs.ics.paz1c.obchodnaSiet.entity.Prevadzka;
 import sk.upjs.ics.paz1c.obchodnaSiet.entity.Produkt;
+import sk.upjs.ics.paz1c.obchodnaSiet.entity.ProduktNaPredajni;
 
 /**
  *
@@ -75,6 +78,11 @@ public class PridatProduktNaPrevadzkuForm extends javax.swing.JFrame {
 
         pridatButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         pridatButton.setText("Pridať");
+        pridatButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pridatButtonActionPerformed(evt);
+            }
+        });
 
         spatButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         spatButton.setText("Späť");
@@ -145,6 +153,19 @@ public class PridatProduktNaPrevadzkuForm extends javax.swing.JFrame {
         new ProdutkyForm().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_spatButtonActionPerformed
+
+    private void pridatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pridatButtonActionPerformed
+        ProduktNaPredajni produktNaPredajni = new ProduktNaPredajni();
+        Prevadzka prevadzka = (Prevadzka) nazovPrevadzkyComboBox.getSelectedItem();
+        Produkt produkt = (Produkt) nazovProduktuComboBox.getSelectedItem();
+        produktNaPredajni.setPrevadzkaId(prevadzka.getId());
+        produktNaPredajni.setProduktId(produkt.getId());
+        produktNaPredajni.setKusy(Integer.parseInt(pocetKusovTextField.getText()));
+        produktNaPredajni.setZlava(Double.parseDouble(zlavaTextField.getText()));
+        ProduktNaPredajniDao dao = DaoFactory.INSTANCE.getProduktNaPredajniDao();
+        dao.pridajProduktNaPredajnu(produktNaPredajni);
+        this.dispose();
+    }//GEN-LAST:event_pridatButtonActionPerformed
 
     /**
      * @param args the command line arguments
