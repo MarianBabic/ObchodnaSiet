@@ -1,19 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sk.upjs.ics.paz1c.obchodnaSiet.forms;
 
-/**
- *
- * @author Student
- */
+import sk.upjs.ics.paz1c.obchodnaSiet.dao.DaoFactory;
+import sk.upjs.ics.paz1c.obchodnaSiet.entity.Prevadzka;
+
 public class PridatPrevadzkuForm extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PridatPrevadzkuForm
-     */
     public PridatPrevadzkuForm() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -80,6 +71,11 @@ public class PridatPrevadzkuForm extends javax.swing.JFrame {
 
         pridatButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         pridatButton.setText("Pridať");
+        pridatButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pridatButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -139,9 +135,21 @@ public class PridatPrevadzkuForm extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_spatButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void pridatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pridatButtonActionPerformed
+        // TODO add your handling code here:
+        String nazov = nazovTextField.getText();
+        String adresa = adresaTextArea.getText();
+        String otvaracieHodiny = otvaracieHodinyTextArea.getText();
+        Prevadzka prevadzka = new Prevadzka();
+        prevadzka.setNazov(nazov);
+        prevadzka.setAdresa(adresa);
+        prevadzka.setOtvaracieHodiny(otvaracieHodiny);
+        DaoFactory.INSTANCE.getPrevadzkaDao().pridajPrevadzku(prevadzka);
+
+        new PrevadzkyForm().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_pridatButtonActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
