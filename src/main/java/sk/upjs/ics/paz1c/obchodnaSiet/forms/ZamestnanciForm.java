@@ -1,19 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sk.upjs.ics.paz1c.obchodnaSiet.forms;
 
-/**
- *
- * @author Student
- */
+import sk.upjs.ics.paz1c.obchodnaSiet.entity.Zamestnanec;
+
 public class ZamestnanciForm extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ZamestnanciForm
-     */
     public ZamestnanciForm() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -47,11 +37,8 @@ public class ZamestnanciForm extends javax.swing.JFrame {
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         zamestnanciList.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        zamestnanciList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
+        zamestnanciList.setModel(new sk.upjs.ics.paz1c.obchodnaSiet.model.ZamestnanecListModel()
+        );
         jScrollPane1.setViewportView(zamestnanciList);
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
@@ -199,9 +186,6 @@ public class ZamestnanciForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_zamestnanciNaPrevadzkeRadioButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -245,7 +229,7 @@ public class ZamestnanciForm extends javax.swing.JFrame {
     private javax.swing.JButton pridatZamestnancaNaPrevadzkuButton;
     private javax.swing.JButton spatButton;
     private javax.swing.JRadioButton vsetciZamestnanciRadioButton;
-    private javax.swing.JList<String> zamestnanciList;
+    private javax.swing.JList<Zamestnanec> zamestnanciList;
     private javax.swing.JRadioButton zamestnanciNaPrevadzkeRadioButton;
     // End of variables declaration//GEN-END:variables
 }
