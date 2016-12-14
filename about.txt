@@ -1,5 +1,5 @@
 Názov projektu: Obchodná sieť
-Autori: Marián Babic, Libor Vojtek
+Autori: Marian Babic, Libor Vojtek
 Popis projektu: Program by mal zabezpečovať komplexnú správu obchodnej siete. Evidencia
 pobočiek (predajní) v rozsahu názov, adresa, výdaje, príjmy, (otváracie hodiny). Evidencia
 zamestnancov v rozsahu meno, priezvisko, pozícia, pobočka, dochádzka, plat. Evidencia
