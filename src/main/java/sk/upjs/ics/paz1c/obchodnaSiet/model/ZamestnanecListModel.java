@@ -8,8 +8,8 @@ import sk.upjs.ics.paz1c.obchodnaSiet.entity.Zamestnanec;
 
 public class ZamestnanecListModel extends AbstractListModel<Zamestnanec> {
 
-    private final ZamestnanecDao zamestnanecDao;
-    private final List<Zamestnanec> zamestnanci;
+    private ZamestnanecDao zamestnanecDao;
+    private List<Zamestnanec> zamestnanci;
 
     public ZamestnanecListModel() {
         zamestnanecDao = DaoFactory.INSTANCE.getZamestnanecDao();
@@ -27,4 +27,8 @@ public class ZamestnanecListModel extends AbstractListModel<Zamestnanec> {
         return zamestnanci.get(index);
     }
 
+    public void refresh(){
+        zamestnanci = zamestnanecDao.nacitajVsetkychZamestnancov();
+        fireContentsChanged(this, 0, getSize());
+    }
 }

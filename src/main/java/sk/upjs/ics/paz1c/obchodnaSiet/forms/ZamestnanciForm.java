@@ -1,6 +1,8 @@
 package sk.upjs.ics.paz1c.obchodnaSiet.forms;
 
+import sk.upjs.ics.paz1c.obchodnaSiet.entity.Prevadzka;
 import sk.upjs.ics.paz1c.obchodnaSiet.entity.Zamestnanec;
+import sk.upjs.ics.paz1c.obchodnaSiet.model.ZamestnanecListModel;
 
 public class ZamestnanciForm extends javax.swing.JFrame {
 
@@ -65,7 +67,7 @@ public class ZamestnanciForm extends javax.swing.JFrame {
         });
 
         prevadzkyComboBox.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        prevadzkyComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        prevadzkyComboBox.setModel(new sk.upjs.ics.paz1c.obchodnaSiet.model.PrevadzkyComboBoxModel());
 
         spatButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         spatButton.setText("Späť");
@@ -175,7 +177,10 @@ public class ZamestnanciForm extends javax.swing.JFrame {
     }//GEN-LAST:event_spatButtonActionPerformed
 
     private void odobratZamestnancaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_odobratZamestnancaButtonActionPerformed
-        new OdobratZamestnancaDialogForm(this, true).setVisible(true);
+        Zamestnanec zamestnanec = zamestnanciList.getSelectedValue();
+        new OdobratZamestnancaDialogForm(this, true, zamestnanec.getId()).setVisible(true);
+        ZamestnanecListModel model = (ZamestnanecListModel) zamestnanciList.getModel();
+        model.refresh();
     }//GEN-LAST:event_odobratZamestnancaButtonActionPerformed
 
     private void vsetciZamestnanciRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vsetciZamestnanciRadioButtonActionPerformed
@@ -224,7 +229,7 @@ public class ZamestnanciForm extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.ButtonGroup moznostiZobrazeniaButtonGroup;
     private javax.swing.JButton odobratZamestnancaButton;
-    private javax.swing.JComboBox<String> prevadzkyComboBox;
+    private javax.swing.JComboBox<Prevadzka> prevadzkyComboBox;
     private javax.swing.JButton pridatZamestnancaButton;
     private javax.swing.JButton pridatZamestnancaNaPrevadzkuButton;
     private javax.swing.JButton spatButton;
